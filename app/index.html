@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>App RPG Persona Style</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css.css">
+    </head>
+    <body>
+
+        <div class="container-fluid main-container">
+
+            <!-- HEADER -->
+            <header class="app-header text-center">
+                <h1>MI PERSONA APP</h1>
+            </header>
+
+            <div class="row">
+
+                <!-- ESTADÍSTICAS -->
+                <div class="col-md-4">
+                    <div class="panel">
+                        <h2>Estadísticas</h2>
+
+                        <!-- Vida por partes -->
+                        <h4>Cuerpo</h4>
+                        <ul class="list-unstyled">
+                            <li>🧠 Cabeza
+                                <div class="progress">
+                                    <div class="progress-bar hp-bar" style="width: 80%"></div>
+                                </div>
+                            </li>
+                            <li>💪 Brazo
+                                <div class="progress">
+                                    <div class="progress-bar hp-bar" style="width: 60%"></div>
+                                </div>
+                            </li>
+                            <li>🦵 Pierna
+                                <div class="progress">
+                                    <div class="progress-bar hp-bar" style="width: 90%"></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <!-- Habilidades -->
+                        <h4>Habilidades</h4>
+                        <ul class="skill-list">
+                            <li>Ataque</li>
+                            <li>Defensa</li>
+                            <li>Velocidad</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- INVENTARIO -->
+                <div class="col-md-4">
+                    <div class="panel">
+                        <h2>Inventario</h2>
+                        <ul class="inventory-list">
+                            <li>Poción</li>
+                            <li>Espada</li>
+                            <li>Llave misteriosa</li>
+                        </ul>
+                    </div>
+
+                    <!-- MISIONES -->
+                    <div class="panel">
+                        <h2>Misiones</h2>
+                        <div class="mission">
+                            <h5>Derrota al jefe</h5>
+                            <p>Encuentra y vence al enemigo principal.</p>
+                        </div>
+                        <div class="mission">
+                            <h5>Explorar zona</h5>
+                            <p>Descubre el mapa completo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PERSONA -->
+                <div class="col-md-4">
+                    <div class="panel persona-panel">
+                        <h2>Persona</h2>
+
+                        <h4>Vida / Mana</h4>
+                        <div class="progress mb-2">
+                            <div class="progress-bar hp-bar" style="width: 75%">HP</div>
+                        </div>
+                        <div class="progress mb-3">
+                            <div class="progress-bar mana-bar" style="width: 50%">MP</div>
+                        </div>
+
+                        <h4>Debilidades</h4>
+                        <ul class="weakness-list">
+                            <li>Fuego</li>
+                            <li>Hielo</li>
+                        </ul>
+
+                        <h4>Habilidades</h4>
+                        <ul class="skill-list">
+                            <li>Agni</li>
+                            <li>Bufu</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </body>
+    <script type="text/javascript" src="app.js"></script>
+</html>

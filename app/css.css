@@ -1,0 +1,95 @@
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: 'Arial Black', sans-serif;
+}
+
+/* HEADER */
+.app-header {
+    background-color: red;
+    padding: 20px;
+    margin-bottom: 20px;
+    transform: skew(-5deg);
+}
+
+.app-header h1 {
+    transform: skew(5deg);
+    color: white;
+}
+
+/* PANEL GENERAL */
+.panel {
+    background-color: #111;
+    border: 3px solid red;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 5px 5px 0 red;
+    transition: transform 0.2s;
+}
+
+.panel:hover {
+    transform: scale(1.02) rotate(-1deg);
+}
+
+/* TITULOS */
+h2 {
+    color: red;
+    border-bottom: 2px solid white;
+    padding-bottom: 5px;
+}
+
+h4 {
+    color: white;
+    margin-top: 10px;
+}
+
+/* BARRAS */
+.progress {
+    height: 15px;
+    background-color: #222;
+    border: 1px solid white;
+}
+
+.hp-bar {
+    background-color: red;
+}
+
+.mana-bar {
+    background-color: white;
+    color: black;
+}
+
+/* LISTAS */
+ul {
+    padding-left: 10px;
+}
+
+.skill-list li,
+.inventory-list li,
+.weakness-list li {
+    background: red;
+    color: white;
+    margin: 5px 0;
+    padding: 5px;
+    transform: skew(-5deg);
+}
+
+/* MISIONES */
+.mission {
+    background-color: white;
+    color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    transform: rotate(-1deg);
+    border-left: 5px solid red;
+}
+
+.mission h5 {
+    font-weight: bold;
+}
+
+/* PERSONA PANEL */
+.persona-panel {
+    background: linear-gradient(135deg, black, red);
+    border: 3px solid white;
+}
