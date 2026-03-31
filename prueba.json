@@ -1,4 +1,31 @@
 {
-  "a": 100,
-  "b": 20
+  "habilidades": [
+    "Caminar",
+    "Hablar"
+  ],
+
+  "inventario": [
+    "Galleta",
+    "Patata"
+  ],
+
+  "misiones" : [
+    {
+      "nombre": "Gran Cazador",
+      "detalles": "Caza 5 demonios"
+    },
+    {
+      "nombre": "Jardinero experto",
+      "detalles": "Cultiva 5 calabazas"
+    }
+  ],
+
+  "persona" : {
+    "debilidades": [],
+
+    "habilidades": [
+      "Oogi",
+      "Myriad truths"
+    ]
+  }
 }
