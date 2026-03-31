@@ -21,11 +21,42 @@
   ],
 
   "persona" : {
-    "debilidades": [],
+    "debilidades": [
+      {
+        "nombre": "Físico",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Fuego",
+        "detalles": "WEAK"
+      },
+      {
+        "nombre": "Hielo",
+        "detalles": "RESIST"
+      },
+      {
+        "nombre": "Electricidad",
+        "detalles": "IMMUNE"
+      },
+      {
+        "nombre": "Oscuridad",
+        "detalles": "ABSORB"
+      },
+      {
+        "nombre": "Luz",
+        "detalles": "REFLECT"
+      }
+    ],
 
     "habilidades": [
-      "Oogi",
-      "Myriad truths"
+      {
+        "nombre": "Oogi",
+        "detalles": "Pues algo hará"
+      },
+      {
+        "nombre": "Myriad truths",
+        "detalles": "Te asesina"
+      }
     ]
   }
 }

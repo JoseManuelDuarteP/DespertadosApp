@@ -1,4 +1,13 @@
-function cargarJSON(local) {
+const listaDebilidades = {
+    WEAK: "Débil",
+    RESIST: "Resistente",
+    IMMUNE: "Inmune",
+    ABSORB: "Absorbe",
+    REFLECT: "Refleja",
+    NORMAL: "Normal"
+}
+
+function cargarJSON() {
     let archivo = this.files[0];
     if (!archivo) return;
 
@@ -31,19 +40,46 @@ function leerJSON(archivo, callback) {
 function ponerJSONenElHTML(datos) {
     if (!datos) return;
 
-    document.getElementById("skill-list").innerHTML = crearListaHTML(datos.habilidades);
-    document.getElementById("inventory-list").innerHTML = crearListaHTML(datos.inventario);
+    document.getElementById("skill-list").innerHTML =
+        crearListaHTML(datos.habilidades);
+
+    document.getElementById("inventory-list").innerHTML =
+        crearListaHTML(datos.inventario);
+
     document.getElementById("mission-list").innerHTML +=
-        datos.misiones.map(mision =>
-            `<div class="mission">
-                <h5>${mision.nombre}</h5>
-                <p>${mision.detalles}</p>
-            </div>`).join('');
-    document.getElementById("persona-skill-list").innerHTML = crearListaHTML(datos.persona.habilidades);
+        crearTarjetaHTML(datos.misiones, "mission")
+
+    document.getElementById("persona-skill-list").innerHTML =
+        crearTarjetaHTML(datos.persona.habilidades, "skill-card");
+
+    document.getElementById("weakness-container").innerHTML =
+        crearTarjetaHTML(datos.persona.debilidades, "weakness-item");
 }
 
 function crearListaHTML(lista) {
     return lista.map(x => `<li>${x}</li>`).join('');
+}
+
+function crearTarjetaHTML(lista, clases) {
+    return lista.map(x => {
+        let clase = clases; // Map es un bucle, hay que reiniciar el parámetro
+
+        clase += comprobarClaseCss(x, clases);
+
+        return `<div class="${clase}">
+                    <h5>${x.nombre}</h5>
+                    <p>${clases === "weakness-item" ? listaDebilidades[x.detalles] : x.detalles || ""}</p>
+                </div>`;
+    }).join('');
+}
+
+function comprobarClaseCss(x, clases) {
+    switch(clases) {
+        case "weakness-item":
+            return " " + x.detalles.toLowerCase();
+        default:
+            return "";
+    }
 }
 
 function cargarJSONDesdeLocalStorage() {
