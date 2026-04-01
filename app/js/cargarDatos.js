@@ -7,6 +7,17 @@ const listaDebilidades = {
     NORMAL: "Normal"
 }
 
+/*const listaStats = {
+    FUE: "Fuerza",
+    DES: "Destreza",
+    CON: "Constitución",
+    INT: "Inteligencia",
+    VOL: "Voluntad",
+    AST: "Astra",
+    PER: "Percepción",
+    DEV: "Devoción"
+}*/
+
 function cargarJSON() {
     let archivo = this.files[0];
     if (!archivo) return;
@@ -60,6 +71,12 @@ function ponerJSONenElHTML(datos) {
 
     document.getElementById("weakness-container").innerHTML =
         crearHTML(datos.persona.debilidades, "weakness-item");
+
+    document.getElementById("stats-grid-personaje").innerHTML =
+        crearHTML(datos.estadisticas, "stat");
+
+    document.getElementById("stats-grid-persona").innerHTML =
+        crearHTML(datos.persona.estadisticas, "stat");
 
     cargarImagen(datos.foto, document
         .getElementById("name-container"), "character-image");
@@ -122,6 +139,11 @@ function crearContenidoTarjeta(x, clases) {
             return `
                 <h5>${x.nombre}</h5><span class="quantity">${x.cantidad}</span>
                 <p>${x.descripcion}</p>
+            `;
+
+        case "stat":
+            return `
+                <span>${x.stat}</span><strong>${x.valor}</strong>
             `;
 
         default:

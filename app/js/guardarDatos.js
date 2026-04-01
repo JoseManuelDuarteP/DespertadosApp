@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
             guardarImagen(
                 "imagen_personaje",
                 ev,
-                document.getElementById("character-image-input"),
+                document.getElementById("name-container"),
                 "character-image");
         });
 
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             guardarImagen(
                 "imagen_persona",
                 ev,
-                document.getElementById("persona-image-input"),
+                document.getElementById("persona-name-container"),
                 "persona-image");
         });
 });

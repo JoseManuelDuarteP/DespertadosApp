@@ -3,6 +3,74 @@
 
   "foto": "imagen_personaje",
 
+  "estadisticas": [
+    {
+      "stat": "FUE",
+      "valor": 3
+    },
+    {
+      "stat": "DES",
+      "valor": 3
+    },
+    {
+      "stat": "CON",
+      "valor": 3
+    },
+    {
+      "stat": "INT",
+      "valor": 3
+    },
+    {
+      "stat": "VOL",
+      "valor": 3
+    },
+    {
+      "stat": "AST",
+      "valor": 3
+    },
+    {
+      "stat": "PER",
+      "valor": 3
+    },
+    {
+      "stat": "DEV",
+      "valor": 3
+    }
+  ],
+
+  "vida": [
+    {
+      "parte": "Cabeza",
+      "max": 40,
+      "actual": 40
+    },
+    {
+      "parte": "Torso",
+      "max": 60,
+      "actual": 50
+    },
+    {
+      "parte": "Brazo izq.",
+      "max": 20,
+      "actual": 20
+    },
+    {
+      "parte": "Brazo der.",
+      "max": 20,
+      "actual": 15
+    },
+    {
+      "parte": "Pierna izq.",
+      "max": 30,
+      "actual": 10
+    },
+    {
+      "parte": "Pierna der.",
+      "max": 30,
+      "actual": 30
+    }
+  ],
+
   "habilidades": [
     {
       "nombre": "Caminar",
@@ -48,6 +116,41 @@
     "nombre": "Shakil O'neal",
 
     "foto": "imagen_persona",
+
+    "estadisticas": [
+      {
+        "stat": "FUE",
+        "valor": 4
+      },
+      {
+        "stat": "DES",
+        "valor": 4
+      },
+      {
+        "stat": "CON",
+        "valor": 4
+      },
+      {
+        "stat": "INT",
+        "valor": 4
+      },
+      {
+        "stat": "VOL",
+        "valor": 4
+      },
+      {
+        "stat": "AST",
+        "valor": 4
+      },
+      {
+        "stat": "PER",
+        "valor": 4
+      },
+      {
+        "stat": "DEV",
+        "valor": 4
+      }
+    ],
 
     "debilidades": [
       {

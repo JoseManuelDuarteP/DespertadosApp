@@ -450,3 +450,54 @@ ul {
 #persona-image:hover {
     transform: scale(1.05);
 }
+
+/* ===== ESTADÍSTICAS ===== */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 12px;
+}
+
+.stat {
+    background: black;
+    border: 2px solid red;
+    text-align: center;
+    padding: 6px 4px;
+    transform: skew(-5deg);
+    box-shadow: 3px 3px 0 red;
+    transition: all 0.2s ease;
+}
+
+.stat:hover {
+    transform: skew(-5deg) scale(1.08);
+    box-shadow: 5px 5px 0 red;
+}
+
+.stat span {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: #aaa;
+    transform: skew(5deg);
+}
+
+.stat strong {
+    font-size: 1.1rem;
+    color: white;
+    transform: skew(5deg);
+}
+
+/* Variante Persona */
+.persona-stats .stat {
+    border-color: white;
+    box-shadow: 3px 3px 0 white;
+}
+
+.persona-stats .stat:hover {
+    box-shadow: 5px 5px 0 white;
+}
+
+.persona-stats .stat strong {
+    color: yellow;
+}
