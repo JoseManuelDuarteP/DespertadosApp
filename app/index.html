@@ -21,7 +21,13 @@
                 <div class="col-md-4">
                     <div class="panel">
                         <h2>Estadísticas</h2>
-                        <h3 id="character-name" class="character-name"></h3>
+                        <div class="name-container">
+                            <h3 id="character-name" class="character-name"></h3>
+                            <label class="image-input-label" title="Cambiar imagen">
+                                📷
+                                <input type="file" id="character-image-input" class="image-input">
+                            </label>
+                        </div>
 
                         <!-- Vida por partes -->
                         <h4>Cuerpo</h4>
@@ -113,7 +119,13 @@
                 <div class="col-md-4">
                     <div class="panel persona-panel">
                         <h2>Persona</h2>
-                        <h3 id="persona-name" class="persona-name"></h3>
+                        <div class="name-container">
+                            <h3 id="persona-name" class="persona-name"></h3>
+                            <label class="image-input-label" title="Cambiar imagen">
+                                📷
+                                <input type="file" id="persona-image-input" class="image-input">
+                            </label>
+                        </div>
 
                         <h4>Vida / Mana</h4>
                         <div class="progress mb-2">
@@ -167,5 +179,6 @@
         </form>
 
     </body>
-    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="cargarDatos.js"></script>
+    <script type="text/javascript" src="guardarDatos.js"></script>
 </html>

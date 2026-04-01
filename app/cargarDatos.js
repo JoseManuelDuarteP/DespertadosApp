@@ -86,7 +86,7 @@ function crearContenidoTarjeta(x, clases) {
 
         case "skill-card character-skill":
             return `
-                <h5>${x.nombre}</h5>
+                <h5>${x.nombre} +${x.nivel * x.tier}</h5>
                 <p>${x.detalles}</p>
                 <div class="skill-meta">
                     <span>Nv: ${x.nivel}</span>
@@ -123,8 +123,8 @@ function cargarJSONDesdeLocalStorage() {
     ponerJSONenElHTML(datos);
 }
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
     cargarJSONDesdeLocalStorage();
 
     document.getElementById("fileField").onchange = cargarJSON;
-}
+});

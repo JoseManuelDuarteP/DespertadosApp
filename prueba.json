@@ -1,6 +1,8 @@
 {
   "nombre": "Antonio",
 
+  "foto": "antonio.jpg",
+
   "habilidades": [
     {
       "nombre": "Caminar",
@@ -44,6 +46,8 @@
 
   "persona" : {
     "nombre": "Shakil O'neal",
+
+    "foto": "shak.jpg",
 
     "debilidades": [
       {
