@@ -40,35 +40,34 @@ function leerJSON(archivo, callback) {
 function ponerJSONenElHTML(datos) {
     if (!datos) return;
 
+    document.getElementById("character-name").innerHTML =
+        datos.nombre;
+
+    document.getElementById("persona-name").innerHTML =
+        datos.persona.nombre;
+
     document.getElementById("skill-list").innerHTML =
-        crearListaHTML(datos.habilidades);
+        crearHTML(datos.habilidades, "skill-card character-skill");
 
     document.getElementById("inventory-list").innerHTML =
-        crearListaHTML(datos.inventario);
+        crearHTML(datos.inventario, "inventory-item");
 
     document.getElementById("mission-list").innerHTML +=
-        crearTarjetaHTML(datos.misiones, "mission")
+        crearHTML(datos.misiones, "mission")
 
     document.getElementById("persona-skill-list").innerHTML =
-        crearTarjetaHTML(datos.persona.habilidades, "skill-card");
+        crearHTML(datos.persona.habilidades, "skill-card");
 
     document.getElementById("weakness-container").innerHTML =
-        crearTarjetaHTML(datos.persona.debilidades, "weakness-item");
+        crearHTML(datos.persona.debilidades, "weakness-item");
 }
 
-function crearListaHTML(lista) {
-    return lista.map(x => `<li>${x}</li>`).join('');
-}
-
-function crearTarjetaHTML(lista, clases) {
+function crearHTML(lista, clases) {
     return lista.map(x => {
-        let clase = clases; // Map es un bucle, hay que reiniciar el parámetro
-
-        clase += comprobarClaseCss(x, clases);
+        let clase = clases + comprobarClaseCss(x, clases);
 
         return `<div class="${clase}">
-                    <h5>${x.nombre}</h5>
-                    <p>${clases === "weakness-item" ? listaDebilidades[x.detalles] : x.detalles || ""}</p>
+                    ${crearContenidoTarjeta(x, clases)}
                 </div>`;
     }).join('');
 }
@@ -79,6 +78,40 @@ function comprobarClaseCss(x, clases) {
             return " " + x.detalles.toLowerCase();
         default:
             return "";
+    }
+}
+
+function crearContenidoTarjeta(x, clases) {
+    switch (clases) {
+
+        case "skill-card character-skill":
+            return `
+                <h5>${x.nombre}</h5>
+                <p>${x.detalles}</p>
+                <div class="skill-meta">
+                    <span>Nv: ${x.nivel}</span>
+                    <span>Tier: ${x.tier}</span>
+                    <span>Stat: ${x.stat}</span>
+                </div>
+            `;
+
+        case "weakness-item":
+            return `
+                <h5>${x.nombre}</h5>
+                <p>${listaDebilidades[x.detalles]}</p>
+            `;
+
+        case "inventory-item":
+            return `
+                <h5>${x.nombre}</h5><span class="quantity">${x.cantidad}</span>
+                <p>${x.descripcion}</p>
+            `;
+
+        default:
+            return `
+                <h5>${x.nombre}</h5>
+                <p>${x.detalles || ""}</p>
+            `;
     }
 }
 

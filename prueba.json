@@ -1,12 +1,34 @@
 {
+  "nombre": "Antonio",
+
   "habilidades": [
-    "Caminar",
-    "Hablar"
+    {
+      "nombre": "Caminar",
+      "detalles": "Caminas más lejos",
+      "nivel": 2,
+      "tier": 3,
+      "stat": "CON"
+    },
+    {
+      "nombre": "Respirar",
+      "detalles": "Suele ser importante tener esto",
+      "nivel": 4,
+      "tier": 1,
+      "stat": "INT"
+    }
   ],
 
   "inventario": [
-    "Galleta",
-    "Patata"
+    {
+      "nombre": "Galleta",
+      "cantidad": 3,
+      "descripcion": "De chocolate"
+    },
+    {
+      "nombre": "Patata",
+      "cantidad": 1,
+      "descripcion": "Crecido en el suelo"
+    }
   ],
 
   "misiones" : [
@@ -21,6 +43,8 @@
   ],
 
   "persona" : {
+    "nombre": "Shakil O'neal",
+
     "debilidades": [
       {
         "nombre": "Físico",
