@@ -60,6 +60,11 @@ function ponerJSONenElHTML(datos) {
 
     document.getElementById("weakness-container").innerHTML =
         crearHTML(datos.persona.debilidades, "weakness-item");
+
+    cargarImagen(datos.foto, document
+        .getElementById("name-container"), "character-image");
+    cargarImagen(datos.persona.foto, document
+        .getElementById("persona-name-container"), "persona-image");
 }
 
 function crearHTML(lista, clases) {
@@ -70,6 +75,18 @@ function crearHTML(lista, clases) {
                     ${crearContenidoTarjeta(x, clases)}
                 </div>`;
     }).join('');
+}
+
+function cargarImagen(imagen, lugarImagen, id) {
+    let img = document.getElementById(id);
+
+    if (!img) {
+        img = document.createElement("img");
+        img.id = id;
+        lugarImagen.after(img);
+    }
+
+    img.src = localStorage.getItem(imagen);
 }
 
 function comprobarClaseCss(x, clases) {

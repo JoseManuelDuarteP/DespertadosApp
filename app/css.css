@@ -385,12 +385,27 @@ ul {
     margin-left: 6px;
 }
 
-/* Contenedor del nombre */
+/* Contenedor de nombre + imagen */
 .name-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.name-container img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid red;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 red;
+    transition: transform 0.2s;
+}
+
+.name-container img:hover {
+    transform: scale(1.05);
 }
 
 /* Label estilizado como botón */
@@ -418,11 +433,20 @@ ul {
     display: none;
 }
 
-/* Imágenes debajo del nombre */
-.name-container + img {
-    width: 100%;
-    margin-top: 5px;
-    border: 2px solid red;
-    border-radius: 5px;
-    box-shadow: 3px 3px 0 red;
+#character-image,
+#persona-image {
+    display: block;
+    width: 275px;
+    height: auto;
+    object-fit: cover;
+    margin: 10px auto;
+    border: 3px solid red;
+    border-radius: 10px;
+    box-shadow: 4px 4px 0 red;
+    transition: transform 0.2s;
+}
+
+#character-image:hover,
+#persona-image:hover {
+    transform: scale(1.05);
 }
