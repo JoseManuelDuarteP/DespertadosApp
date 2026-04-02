@@ -78,6 +78,12 @@ function ponerJSONenElHTML(datos) {
     document.getElementById("stats-grid-persona").innerHTML =
         crearHTML(datos.persona.estadisticas, "stat");
 
+    document.getElementById("health-grid").innerHTML =
+        crearHTML(datos.vida, "health-item");
+
+    document.getElementById("persona-resources-container").innerHTML =
+        crearContenidoTarjeta(datos.persona, "persona-resources-container");
+
     cargarImagen(datos.foto, document
         .getElementById("name-container"), "character-image");
     cargarImagen(datos.persona.foto, document
@@ -144,6 +150,34 @@ function crearContenidoTarjeta(x, clases) {
         case "stat":
             return `
                 <span>${x.stat}</span><strong>${x.valor}</strong>
+            `;
+
+        case "health-item":
+            return `
+                <h5>${x.parte}</h5>
+                <div class="progress health-wrapper">
+                    <div class="progress-bar hp-bar" style="width: ${(x.actual * 100)/x.maximo}%"></div>
+                    <span class="health-text">${x.actual}/${x.maximo}</span>
+                </div>
+            `;
+
+        case "persona-resources-container":
+            return `
+                <div class="persona-bar">
+                    <h5>HP</h5>
+                    <div class="progress persona-bar-wrapper">
+                        <div class="progress-bar hp-bar" style="width: ${(x.vida.actual * 100)/x.vida.maximo}%"></div>
+                        <span class="bar-text">${x.vida.actual}/${x.vida.maximo}</span>
+                    </div>
+                </div>
+
+                <div class="persona-bar">
+                    <h5>MP</h5>
+                    <div class="progress persona-bar-wrapper mana">
+                        <div class="progress-bar mana-bar" style="width: ${(x.mp.actual * 100)/x.mp.maximo}%"></div>
+                        <span class="bar-text">${x.mp.actual}/${x.mp.maximo}</span>
+                    </div>
+                </div>
             `;
 
         default:

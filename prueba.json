@@ -41,33 +41,33 @@
   "vida": [
     {
       "parte": "Cabeza",
-      "max": 40,
+      "maximo": 40,
       "actual": 40
     },
     {
       "parte": "Torso",
-      "max": 60,
+      "maximo": 60,
       "actual": 50
     },
     {
       "parte": "Brazo izq.",
-      "max": 20,
+      "maximo": 20,
       "actual": 20
     },
     {
       "parte": "Brazo der.",
-      "max": 20,
+      "maximo": 20,
       "actual": 15
     },
     {
       "parte": "Pierna izq.",
-      "max": 30,
+      "maximo": 30,
       "actual": 10
     },
     {
       "parte": "Pierna der.",
-      "max": 30,
-      "actual": 30
+      "maximo": 30,
+      "actual": 1
     }
   ],
 
@@ -116,6 +116,16 @@
     "nombre": "Shakil O'neal",
 
     "foto": "imagen_persona",
+
+    "vida": {
+      "maximo": 200,
+      "actual": 143
+    },
+
+    "mp": {
+      "maximo": 89,
+      "actual": 31
+    },
 
     "estadisticas": [
       {

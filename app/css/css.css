@@ -44,7 +44,8 @@ h4 {
 }
 
 /* BARRAS */
-.progress {
+.health-item .progress,
+.persona-bar .progress {
     height: 15px;
     background-color: #222;
     border: 1px solid white;
@@ -55,13 +56,7 @@ h4 {
 }
 
 .mana-bar {
-    background-color: white;
-    color: black;
-}
-
-/* LISTAS */
-ul {
-    padding-left: 10px;
+    background-color: #214dff;
 }
 
 /* NOMBRE PERSONAJE */
@@ -500,4 +495,97 @@ ul {
 
 .persona-stats .stat strong {
     color: yellow;
+}
+
+/* ===== BARRAS SALUD ===== */
+.health-item {
+    background: #000;
+    border: 2px solid red;
+    padding: 6px 8px;
+    margin-bottom: 6px;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+}
+
+.health-wrapper {
+    position: relative;
+}
+
+.health-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+
+    pointer-events: none;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
+.health-item:hover {
+    transform: skew(-3deg) scale(1.03);
+    box-shadow: 0 0 6px red;
+}
+
+.health-item h5 {
+    color: red;
+    font-weight: bold;
+    margin: 0 0 4px 0;
+    font-size: 0.9rem;
+    transform: skew(3deg);
+}
+
+.health-item .progress {
+    transform: skew(3deg);
+}
+
+/* ===== PERSONA BARS ===== */
+.persona-bar {
+    background: #000;
+    border: 2px solid white;
+    padding: 6px 8px;
+    margin-bottom: 8px;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+}
+
+.persona-bar:hover {
+    transform: skew(-3deg) scale(1.03);
+    box-shadow: 0 0 8px white;
+}
+
+.persona-bar h5 {
+    margin: 0 0 4px 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: white;
+    transform: skew(3deg);
+}
+
+/* Wrapper */
+.persona-bar-wrapper {
+    position: relative;
+    transform: skew(3deg);
+}
+
+/* TEXTO CENTRADO */
+.bar-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    font-size: 0.75rem;
+    font-weight: bold;
+    color: white;
+
+    pointer-events: none;
+    text-shadow: 0 0 3px black, 0 0 5px black;
+}
+
+.progress-bar {
+    transition: width 0.4s ease;
 }
