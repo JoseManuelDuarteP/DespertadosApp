@@ -199,5 +199,5 @@ function cargarJSONDesdeLocalStorage() {
 document.addEventListener("DOMContentLoaded", function () {
     cargarJSONDesdeLocalStorage();
 
-    document.getElementById("fileField").onchange = cargarJSON;
+    document.getElementById("importField").onchange = cargarJSON;
 });
