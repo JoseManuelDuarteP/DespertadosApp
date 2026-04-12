@@ -24,7 +24,8 @@ function cogerDatos() {
     datosObj.estadisticas =
         obtenerEstadisticas("#stats-grid-personaje");
 
-    /*datosObj.vida =*/
+    datosObj.vida =
+        obtenerVida("#health-grid");
 
     return datosObj;
 }
@@ -32,7 +33,7 @@ function cogerDatos() {
 function obtenerEstadisticas(selector) {
     let stats =
         document.querySelectorAll(`${selector} .stat`);
-    let  datos = {};
+    let datos = {};
 
     stats.forEach(stat => {
         let clave = stat.querySelector("span").textContent;
@@ -42,6 +43,20 @@ function obtenerEstadisticas(selector) {
     })
 
     return datos;
+}
+
+function obtenerVida(selector) {
+    let vidaPartes =
+        document.querySelectorAll(".health-item");
+    let datos = {};
+
+    vidaPartes.forEach(parte => {
+        let claveParte = parte.querySelector("h5").textContent;
+        datos["parte"] = claveParte;
+
+        let max = parte.querySelector("span").textContent
+            .match();
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
