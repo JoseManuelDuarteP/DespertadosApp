@@ -25,7 +25,10 @@ function cogerDatos() {
         obtenerEstadisticas("#stats-grid-personaje");
 
     datosObj.vida =
-        obtenerVida("#health-grid");
+        obtenerVida();
+
+    datosObj.habilidades =
+        obtenerHabilidades("#skill-list");
 
     return datosObj;
 }
@@ -33,30 +36,47 @@ function cogerDatos() {
 function obtenerEstadisticas(selector) {
     let stats =
         document.querySelectorAll(`${selector} .stat`);
-    let datos = {};
+    let datos = [];
 
     stats.forEach(stat => {
-        let clave = stat.querySelector("span").textContent;
-        let valor = parseInt(stat.querySelector("strong").textContent);
+        let dato = {};
 
-        datos[clave] = valor;
+        let nombreStat = stat.querySelector("span").textContent;
+        let valor = stat.querySelector("strong").textContent;
+
+        dato["stat"] = nombreStat;
+        dato["valor"] = parseInt(valor);
+        datos.push(dato);
     })
 
     return datos;
 }
 
-function obtenerVida(selector) {
+function obtenerVida() {
     let vidaPartes =
         document.querySelectorAll(".health-item");
-    let datos = {};
+    let datos = [];
 
     vidaPartes.forEach(parte => {
-        let claveParte = parte.querySelector("h5").textContent;
-        datos["parte"] = claveParte;
+        let dato = {};
 
+        let claveParte = parte.querySelector("h5").textContent;
         let max = parte.querySelector("span").textContent
-            .match();
+            .split("/")[1];
+        let actual = parte.querySelector("span").textContent
+            .split("/")[0];
+
+        dato["parte"] = claveParte;
+        dato["max"] = parseInt(max);
+        dato["actual"] = parseInt(actual);
+        datos.push(dato);
     });
+
+    return datos;
+}
+
+function obtenerHabilidades(selector) {
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
