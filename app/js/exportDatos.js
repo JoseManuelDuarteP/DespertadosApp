@@ -98,6 +98,7 @@ function obtenerHabilidades(selector) {
         dato["nivel"] = parseInt(nivel);
         dato["tier"] = parseInt(tier);
         dato["stat"] = stat;
+        datos.push(dato);
     });
 
     return datos;
