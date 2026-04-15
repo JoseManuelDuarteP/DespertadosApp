@@ -28,7 +28,16 @@ function cogerDatos() {
         obtenerVida();
 
     datosObj.habilidades =
-        obtenerHabilidades("#skill-list");
+        obtenerHabilidades();
+
+    datosObj.inventario =
+        obtenerInventario();
+
+    datosObj.misiones =
+        obtenerDatosSimples("#mission-list");
+
+    /*datosObj.persona.nombre =
+        document.getElementById("persona-name").textContent;*/
 
     return datosObj;
 }
@@ -75,9 +84,9 @@ function obtenerVida() {
     return datos;
 }
 
-function obtenerHabilidades(selector) {
+function obtenerHabilidades() {
     let habilidades =
-        document.querySelectorAll(`${selector} .character-skill`);
+        document.querySelectorAll(`#skill-list .character-skill`);
     let datos = [];
 
     habilidades.forEach(habilidad => {
@@ -98,6 +107,46 @@ function obtenerHabilidades(selector) {
         dato["nivel"] = parseInt(nivel);
         dato["tier"] = parseInt(tier);
         dato["stat"] = stat;
+        datos.push(dato);
+    });
+
+    return datos;
+}
+
+function obtenerInventario() {
+    let inventario =
+        document.querySelectorAll(".inventory-item");
+    let datos = [];
+
+    inventario.forEach(item => {
+        let dato = {};
+
+        let nombre = item.querySelector("h5").textContent;
+        let cantidad = item.querySelector("span").textContent;
+        let descripcion = item.querySelector("p").textContent;
+
+        dato["nombre"] = nombre;
+        dato["cantidad"] = parseInt(cantidad);
+        dato["descripcion"] = descripcion;
+        datos.push(dato);
+    });
+
+    return datos;
+}
+
+function obtenerDatosSimples(selector) {
+    let contenedores =
+        document.querySelectorAll(`${selector} div`);
+    let datos = [];
+
+    contenedores.forEach(contenedor => {
+        let dato = {};
+
+        let nombre = contenedor.querySelector("h5").textContent;
+        let detalles = contenedor.querySelector("p").textContent;
+
+        dato["nombre"] = nombre;
+        dato["detalles"] = detalles;
         datos.push(dato);
     });
 
