@@ -47,7 +47,7 @@ function obtenerEstadisticas(selector) {
         dato["stat"] = nombreStat;
         dato["valor"] = parseInt(valor);
         datos.push(dato);
-    })
+    });
 
     return datos;
 }
@@ -76,7 +76,31 @@ function obtenerVida() {
 }
 
 function obtenerHabilidades(selector) {
+    let habilidades =
+        document.querySelectorAll(`${selector} .character-skill`);
+    let datos = [];
 
+    habilidades.forEach(habilidad => {
+        let dato = {};
+
+        let nombre = habilidad.querySelector("h5").textContent
+            .split(" ")[0];
+        let detalles = habilidad.querySelector("p").textContent;
+        let nivel = habilidad.querySelectorAll("span")[0].textContent
+            .split(" ")[1];
+        let tier = habilidad.querySelectorAll("span")[1].textContent
+            .split(" ")[1];
+        let stat = habilidad.querySelectorAll("span")[2].textContent
+            .split(" ")[1];
+
+        dato["nombre"] = nombre;
+        dato["detalles"] = detalles;
+        dato["nivel"] = parseInt(nivel);
+        dato["tier"] = parseInt(tier);
+        dato["stat"] = stat;
+    });
+
+    return datos;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
