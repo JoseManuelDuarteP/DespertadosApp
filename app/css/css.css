@@ -80,6 +80,10 @@ h4 {
     position: relative;
 
     transition: all 0.2s ease;
+
+    flex: 1;
+    max-width: calc(100% - 40px);
+    overflow: visible;
 }
 
 .character-name::after {
@@ -588,4 +592,55 @@ h4 {
 
 .progress-bar {
     transition: width 0.4s ease;
+}
+
+
+/* BOTONES */
+.edit-personaje {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.edit-personaje button {
+    align-self: center;
+
+    margin-top: -10px;
+
+    background: black;
+    border: 2px solid red;
+    color: red;
+
+    height: 36px;
+    padding: 0 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transform: skew(-5deg);
+    box-shadow: 3px 3px 0 red;
+
+    transition: all 0.2s ease;
+}
+
+.edit-personaje button i {
+    transform: skew(5deg);
+    font-size: 1rem;
+}
+
+.edit-personaje button:hover {
+    background: red;
+    color: black;
+    box-shadow: 5px 5px 0 red;
+    transform: skew(-5deg) scale(1.1);
+}
+
+.edit-personaje button:focus {
+    outline: none;
+    box-shadow: 0 0 10px red;
+}
+
+.edit-personaje h2 {
+    flex: 1;
 }
