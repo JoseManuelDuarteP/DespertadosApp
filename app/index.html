@@ -23,7 +23,9 @@
                     <div class="panel">
                         <div class="edit-personaje">
                             <h2>Estadísticas</h2>
-                            <button><i class="bi bi-pencil"></i>Editar</button>
+                            <button id="btn-edit-stats-personaje" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
                         </div>
                         <div class="name-container" id="name-container">
                             <h3 id="character-name" class="character-name"></h3>
@@ -47,7 +49,12 @@
                         </div>
 
                         <!-- Vida por partes -->
-                        <h4>Cuerpo</h4>
+                        <div class="edit-header">
+                            <h4>Cuerpo</h4>
+                            <button id="btn-edit-cuerpo-personaje" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div id="health-grid">
 <!--                            <div class="health-item">-->
 <!--                                <h5>🧠 Cabeza</h5>-->
@@ -93,7 +100,12 @@
                         </div>
 
                         <!-- Habilidades -->
-                        <h4>Habilidades</h4>
+                        <div class="edit-header">
+                            <h4>Habilidades</h4>
+                            <button id="btn-edit-habilidades-personaje" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div id="skill-list">
 <!--                            <div class="skill-card character-skill">-->
 <!--                                <h5>Ataque Brutal</h5>-->
@@ -112,7 +124,12 @@
                 <!-- INVENTARIO -->
                 <div class="col-md-4">
                     <div class="panel">
-                        <h2>Inventario</h2>
+                        <div class="edit-header">
+                            <h2>Inventario</h2>
+                            <button id="btn-edit-inventario" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div id="inventory-list">
 <!--                            <div class="inventory-item">-->
 <!--                                <h5>Poción de Vida</h5><span class="quantity">x3</span>-->
@@ -131,7 +148,12 @@
 
                     <!-- MISIONES -->
                     <div class="panel" id="mission-list">
-                        <h2>Misiones</h2>
+                        <div class="edit-header">
+                            <h2>Misiones</h2>
+                            <button id="btn-edit-misiones" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
 <!--                        <div class="mission">-->
 <!--                            <h5>Derrota al jefe</h5>-->
 <!--                            <p>Encuentra y vence al enemigo principal.</p>-->
@@ -146,7 +168,12 @@
                 <!-- PERSONA -->
                 <div class="col-md-4">
                     <div class="panel persona-panel">
-                        <h2>Persona</h2>
+                        <div class="edit-header">
+                            <h4>Persona</h4>
+                            <button id="btn-edit-stats-persona" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div class="name-container" id="persona-name-container">
                             <h3 id="persona-name" class="persona-name"></h3>
                             <label class="image-input-label" title="Cambiar imagen">
@@ -169,7 +196,12 @@
                         </div>
 
                         <!-- Recursos Persona -->
-                        <h4>Vida / MP</h4>
+                        <div class="edit-header">
+                            <h4>Vida / MP</h4>
+                            <button id="btn-edit-vida-mp-persona" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div id="persona-resources-container">
 <!--                            <div class="persona-bar">-->
 <!--                                <h5>HP</h5>-->
@@ -188,7 +220,12 @@
 <!--                            </div>-->
                         </div>
 
-                        <h4>Debilidades</h4>
+                        <div class="edit-header">
+                            <h4>Debilidades</h4>
+                            <button id="btn-edit-debilidades-persona" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div class="weakness-container" id="weakness-container">
 
 <!--                            <div class="weakness-item weak">-->
@@ -208,7 +245,12 @@
 
                         </div>
 
-                        <h4>Habilidades</h4>
+                        <div class="edit-header">
+                            <h4>Habilidades</h4>
+                            <button id="btn-edit-habilidades-persona" class="edit-btn">
+                                <i class="bi bi-pencil"></i> Editar
+                            </button>
+                        </div>
                         <div id="persona-skill-list">
 <!--                            <div class="skill-card">-->
 <!--                                <h5>Agni</h5>-->
@@ -233,7 +275,41 @@
 
         <button id="exportBtn">Exportar Personaje</button>
 
+        <!-- === MODALS === -->
+        <div class="editable-section" id="menu-cuerpo-personaje">
+            <!-- health-grid -->
+        </div>
+
+        <div class="editable-section" id="menu-habilidades-personaje">
+            <!-- skill-list -->
+        </div>
+
+        <div class="editable-section" id="menu-inventario">
+            <!-- inventory-list -->
+        </div>
+
+        <div class="editable-section" id="menu-misiones">
+            <!-- mission-list -->
+        </div>
+
+        <div class="editable-section" id="menu-stats-persona">
+            <!-- stats-grid-persona -->
+        </div>
+
+        <div class="editable-section" id="menu-vida-mp-persona">
+            <!-- persona-resources-container -->
+        </div>
+
+        <div class="editable-section" id="menu-debilidades-persona">
+            <!-- weakness-container -->
+        </div>
+
+        <div class="editable-section" id="menu-habilidades-persona">
+            <!-- persona-skill-list -->
+        </div>
+
     </body>
+
     <script type="text/javascript" src="js/cargarDatos.js"></script>
     <script type="text/javascript" src="js/guardarDatos.js"></script>
     <script type="text/javascript" src="js/exportDatos.js"></script>

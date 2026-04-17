@@ -602,45 +602,43 @@ h4 {
     justify-content: space-between;
 }
 
-.edit-personaje button {
-    align-self: center;
+.edit-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6px;
+}
 
-    margin-top: -10px;
-
+.edit-btn {
     background: black;
     border: 2px solid red;
     color: red;
 
-    height: 36px;
+    height: 34px;
     padding: 0 10px;
 
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    justify-content: center;
+    gap: 6px;
+
+    font-weight: bold;
+    text-transform: uppercase;
 
     transform: skew(-5deg);
     box-shadow: 3px 3px 0 red;
-
     transition: all 0.2s ease;
+
+    cursor: pointer;
 }
 
-.edit-personaje button i {
+.edit-btn i {
     transform: skew(5deg);
     font-size: 1rem;
 }
 
-.edit-personaje button:hover {
-    background: red;
+.edit-btn:hover {
+    background: white;
     color: black;
     box-shadow: 5px 5px 0 red;
     transform: skew(-5deg) scale(1.1);
-}
-
-.edit-personaje button:focus {
-    outline: none;
-    box-shadow: 0 0 10px red;
-}
-
-.edit-personaje h2 {
-    flex: 1;
 }
