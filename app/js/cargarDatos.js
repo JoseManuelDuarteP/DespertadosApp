@@ -166,7 +166,7 @@ function crearContenidoTarjeta(x, clases) {
                 <div class="persona-bar">
                     <h5>HP</h5>
                     <div class="progress persona-bar-wrapper">
-                        <div class="progress-bar hp-bar" style="width: ${(x.vida.actual * 100)/x.vida.maximo}%"></div>
+                        <div id="persona-hp-bar" class="progress-bar hp-bar" style="width: ${(x.vida.actual * 100)/x.vida.maximo}%"></div>
                         <span class="bar-text">${x.vida.actual}/${x.vida.maximo}</span>
                     </div>
                 </div>
@@ -174,10 +174,16 @@ function crearContenidoTarjeta(x, clases) {
                 <div class="persona-bar">
                     <h5>MP</h5>
                     <div class="progress persona-bar-wrapper mana">
-                        <div class="progress-bar mana-bar" style="width: ${(x.mp.actual * 100)/x.mp.maximo}%"></div>
+                        <div id="persona-mana-bar" class="progress-bar mana-bar" style="width: ${(x.mp.actual * 100)/x.mp.maximo}%"></div>
                         <span class="bar-text">${x.mp.actual}/${x.mp.maximo}</span>
                     </div>
                 </div>
+            `;
+
+        case "skill-card":
+            return `
+                <h5>${x.nombre} +${x.nivel}</h5>
+                <p>${x.detalles || ""}</p>
             `;
 
         default:

@@ -192,10 +192,12 @@
     "habilidades": [
       {
         "nombre": "Oogi",
+        "nivel": 2,
         "detalles": "Pues algo hará"
       },
       {
         "nombre": "Myriad truths",
+        "nivel": 10,
         "detalles": "Te asesina"
       }
     ]

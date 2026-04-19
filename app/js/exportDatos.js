@@ -36,8 +36,8 @@ function cogerDatos() {
     datosObj.misiones =
         obtenerDatosSimples("#mission-list");
 
-    /*datosObj.persona.nombre =
-        document.getElementById("persona-name").textContent;*/
+    datosObj.persona =
+        crearPersona();
 
     return datosObj;
 }
@@ -146,12 +146,70 @@ function obtenerDatosSimples(selector) {
         let detalles = contenedor.querySelector("p").textContent;
 
         dato["nombre"] = nombre;
+
+        if (Object.values(listaDebilidades).includes(detalles)) {
+            detalles = Object.entries(listaDebilidades)
+                .find(([llave, valor]) => valor === detalles)?.[0];
+
+            dato["detalles"] = detalles;
+        }
         dato["detalles"] = detalles;
         datos.push(dato);
     });
 
     return datos;
 }
+
+function crearPersona() {
+    let persona = {};
+
+    persona.nombre =
+        document.getElementById("persona-name").textContent;
+
+    persona.foto =
+        localStorage.getItem("imagen_persona");
+
+    persona.vida =
+        obtenerRecursoPersona("#persona-hp-bar");
+
+    persona.mp =
+        obtenerRecursoPersona("#persona-mana-bar");
+
+    persona.estadisticas =
+        obtenerEstadisticas("#stats-grid-persona");
+
+    persona.debilidades =
+        obtenerDatosSimples("#weakness-container");
+
+    return persona;
+}
+
+function obtenerRecursoPersona(recurso) {
+    let contenedor =
+        document.querySelector(`${recurso} + span`);
+    let datos = {};
+
+    let maximo =
+        contenedor.textContent.split("/")[1];
+    let actual =
+        contenedor.textContent.split("/")[0];
+
+    datos["maximo"] = maximo;
+    datos["actual"] = actual;
+    return datos;
+}
+
+/*function obtenerDebilidades() {
+    let debilidades =
+        document.querySelectorAll("#weakness-container");
+    let datos = [];
+
+    debilidades.forEach(debilidad => {
+        let dato = {};
+
+
+    });
+}*/
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("exportBtn").onclick = exportar;
