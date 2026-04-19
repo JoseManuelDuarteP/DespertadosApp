@@ -141,6 +141,7 @@ function obtenerDatosSimples(selector) {
 
     contenedores.forEach(contenedor => {
         let dato = {};
+        if (contenedor.classList.contains("edit-header")) return;
 
         let nombre = contenedor.querySelector("h5").textContent;
         let detalles = contenedor.querySelector("p").textContent;
@@ -160,6 +161,7 @@ function obtenerDatosSimples(selector) {
     return datos;
 }
 
+// === FUNCIONES PERSONA ===
 function crearPersona() {
     let persona = {};
 
@@ -181,6 +183,9 @@ function crearPersona() {
     persona.debilidades =
         obtenerDatosSimples("#weakness-container");
 
+    persona.habilidades =
+        obtenerHabilidades();
+
     return persona;
 }
 
@@ -199,17 +204,9 @@ function obtenerRecursoPersona(recurso) {
     return datos;
 }
 
-/*function obtenerDebilidades() {
-    let debilidades =
-        document.querySelectorAll("#weakness-container");
-    let datos = [];
+function obtenerHabilidadesPersona() {
 
-    debilidades.forEach(debilidad => {
-        let dato = {};
-
-
-    });
-}*/
+}
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("exportBtn").onclick = exportar;
