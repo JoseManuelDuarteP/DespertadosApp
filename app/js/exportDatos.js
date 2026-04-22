@@ -184,7 +184,7 @@ function crearPersona() {
         obtenerDatosSimples("#weakness-container");
 
     persona.habilidades =
-        obtenerHabilidades();
+        obtenerHabilidadesPersona();
 
     return persona;
 }
@@ -205,7 +205,32 @@ function obtenerRecursoPersona(recurso) {
 }
 
 function obtenerHabilidadesPersona() {
+    let habilidades =
+        document.querySelectorAll(`#persona-skill-list`);
+    let datos = [];
 
+    habilidades.forEach(habilidad => {
+        let dato = {};
+
+        let nombre = habilidad.querySelector("h5").textContent
+            .split(" ")[0];
+        let detalles = habilidad.querySelector("p").textContent;
+        let nivel = habilidad.querySelectorAll("span")[0].textContent
+            .split(" ")[1];
+        let tier = habilidad.querySelectorAll("span")[1].textContent
+            .split(" ")[1];
+        let stat = habilidad.querySelectorAll("span")[2].textContent
+            .split(" ")[1];
+
+        dato["nombre"] = nombre;
+        dato["detalles"] = detalles;
+        dato["nivel"] = parseInt(nivel);
+        dato["tier"] = parseInt(tier);
+        dato["stat"] = stat;
+        datos.push(dato);
+    });
+
+    return datos;
 }
 
 document.addEventListener("DOMContentLoaded", function () {
