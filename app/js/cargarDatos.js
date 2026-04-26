@@ -109,7 +109,27 @@ function cargarImagen(imagen, lugarImagen, id) {
         lugarImagen.after(img);
     }
 
-    img.src = localStorage.getItem(imagen);
+    if (id === "character-image") {
+        let guardada = localStorage.getItem("imagen_personaje");
+        if (guardada) {
+            img.src = guardada;
+            return;
+        }
+    }
+
+    if (id === "persona-image") {
+        let guardada = localStorage.getItem("imagen_persona");
+        if (guardada) {
+            img.src = guardada;
+            return;
+        }
+    }
+
+    if (imagen && imagen.startsWith("data:image")) {
+        img.src = imagen;
+    } else if (imagen) {
+        img.src = localStorage.getItem(imagen);
+    }
 }
 
 function comprobarClaseCss(x, clases) {
