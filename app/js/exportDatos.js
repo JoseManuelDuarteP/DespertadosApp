@@ -206,7 +206,7 @@ function obtenerRecursoPersona(recurso) {
 
 function obtenerHabilidadesPersona() {
     let habilidades =
-        document.querySelectorAll(`#persona-skill-list`);
+        document.querySelectorAll(`#persona-skill-list .skill-card`);
     let datos = [];
 
     habilidades.forEach(habilidad => {
@@ -216,7 +216,7 @@ function obtenerHabilidadesPersona() {
             .split(" ")[0];
         let detalles = habilidad.querySelector("p").textContent;
         let nivel = habilidad.querySelector("h5").textContent
-            .split(" ")[1].match(/\d+/)[0];
+            .match(/\d+/)[0];
 
         dato["nombre"] = nombre;
         dato["detalles"] = detalles;
