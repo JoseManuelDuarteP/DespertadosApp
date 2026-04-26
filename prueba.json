@@ -85,6 +85,13 @@
       "nivel": 4,
       "tier": 1,
       "stat": "INT"
+    },
+    {
+      "nombre": "Combate con Espada",
+      "detalles": "Joder que básico",
+      "nivel": 1,
+      "tier": 2,
+      "stat": "FUE"
     }
   ],
 

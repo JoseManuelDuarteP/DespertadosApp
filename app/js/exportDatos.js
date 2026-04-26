@@ -76,7 +76,7 @@ function obtenerVida() {
             .split("/")[0];
 
         dato["parte"] = claveParte;
-        dato["max"] = parseInt(max);
+        dato["maximo"] = parseInt(max);
         dato["actual"] = parseInt(actual);
         datos.push(dato);
     });
@@ -93,7 +93,7 @@ function obtenerHabilidades() {
         let dato = {};
 
         let nombre = habilidad.querySelector("h5").textContent
-            .split(" ")[0];
+            .split(" +")[0];
         let detalles = habilidad.querySelector("p").textContent;
         let nivel = habilidad.querySelectorAll("span")[0].textContent
             .split(" ")[1];
@@ -213,14 +213,14 @@ function obtenerHabilidadesPersona() {
         let dato = {};
 
         let nombre = habilidad.querySelector("h5").textContent
-            .split(" ")[0];
-        let detalles = habilidad.querySelector("p").textContent;
+            .split(" +")[0];
         let nivel = habilidad.querySelector("h5").textContent
             .match(/\d+/)[0];
+        let detalles = habilidad.querySelector("p").textContent;
 
         dato["nombre"] = nombre;
-        dato["detalles"] = detalles;
         dato["nivel"] = parseInt(nivel);
+        dato["detalles"] = detalles;
         datos.push(dato);
     });
 
