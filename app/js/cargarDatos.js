@@ -127,8 +127,6 @@ function cargarImagen(imagen, lugarImagen, id) {
 
     if (imagen && imagen.startsWith("data:image")) {
         img.src = imagen;
-    } else if (imagen) {
-        img.src = localStorage.getItem(imagen);
     }
 }
 
@@ -223,6 +221,12 @@ function cargarJSONDesdeLocalStorage() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
+    // Por si se hace F5 sin que haya un JSON
+    cargarImagen("imagen_personaje", document
+        .getElementById("name-container"), "character-image");
+    cargarImagen("imagen_persona", document
+        .getElementById("persona-name-container"), "persona-image");
+
     cargarJSONDesdeLocalStorage();
 
     document.getElementById("importField").onchange = cargarJSON;

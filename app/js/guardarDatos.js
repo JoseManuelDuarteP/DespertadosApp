@@ -6,6 +6,18 @@ function guardarImagen(nombreImagen, ev, lugarImagen, id) {
     reader.onload = function () {
         localStorage.setItem(nombreImagen, reader.result);
 
+        let json = localStorage.getItem("personajeJSON");
+        if (json) {
+            json = JSON.parse(json);
+
+            if (nombreImagen === "imagen_personaje") {
+                json.foto = localStorage.getItem(nombreImagen);
+            } else if (nombreImagen === "imagen_persona") {
+                json.persona.foto = localStorage.getItem(nombreImagen);
+            }
+            localStorage.setItem("personajeJSON", JSON.stringify(json));
+        }
+
         cargarImagen(nombreImagen, lugarImagen, id);
     };
     reader.readAsDataURL(file);
