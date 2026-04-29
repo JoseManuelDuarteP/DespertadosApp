@@ -32,12 +32,19 @@ function leerJSON(archivo, callback) {
 
     reader.onload = function(event) {
         let texto = event.target.result;
+        let datos = JSON.parse(texto);
 
         // Almacenar en navegador
         localStorage.setItem("personajeJSON", texto);
 
+        //Almacenar en DB
+        const peticion = indexedDB.open("despertadosDB", 1);
+        peticion.onsuccess = (ev => {
+            const db = ev.target.result;
+            insertDB(db, datos, "json");
+        });
+
         try {
-            let datos = JSON.parse(texto);
             callback(datos);
         } catch (e) {
             console.log("JSON no válido");

@@ -1,3 +1,6 @@
+// REFACTOR: Cuando lo de actualizar campos esté acabado, todo
+// esto lo simplificamos por simplemente coger el json y exportarlo,
+// ya que al actualizar el campo se acutalizará el json también
 function exportar() {
     let datos = cogerDatos();
     let json = JSON.stringify(datos);
