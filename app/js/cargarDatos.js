@@ -34,15 +34,7 @@ function leerJSON(archivo, callback) {
         let texto = event.target.result;
         let datos = JSON.parse(texto);
 
-        // Almacenar en navegador
-        localStorage.setItem("personajeJSON", texto);
-
-        //Almacenar en DB
-        const peticion = indexedDB.open("despertadosDB", 1);
-        peticion.onsuccess = (ev => {
-            const db = ev.target.result;
-            insertDB(db, datos, "json");
-        });
+        insertDB(datos, "json");
 
         try {
             callback(datos);
@@ -219,12 +211,10 @@ function crearContenidoTarjeta(x, clases) {
     }
 }
 
-function cargarJSONDesdeLocalStorage() {
-    let texto = localStorage.getItem("personajeJSON");
-    if (!texto) return;
-
-    let datos = JSON.parse(texto);
-    ponerJSONenElHTML(datos);
+function cargarJSONDesdeDB() {
+    selectDB("json", 1).then(datos => {
+        if (datos) ponerJSONenElHTML(datos);
+    });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -234,7 +224,7 @@ document.addEventListener("DOMContentLoaded", function () {
     cargarImagen("imagen_persona", document
         .getElementById("persona-name-container"), "persona-image");
 
-    cargarJSONDesdeLocalStorage();
+    cargarJSONDesdeDB();
 
     document.getElementById("importField").onchange = cargarJSON;
 });

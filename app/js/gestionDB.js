@@ -1,49 +1,77 @@
 let db = null; //Global para acceso a DB
 
-// Las funciones async siempre devuelve una promesa: Promise<>
-async function comprobarDB(baseBuscada) {
-    // await pausa la función, espera a que la promesa termine
-    // y devuelve el resultado final, no la promesa
-    const dbs = await indexedDB.databases();
-    return dbs.some(db => db.name === baseBuscada);
-}
-
 function crearDB() {
-    let baseDatos = "despertadosDB";
-    comprobarDB(baseDatos).then(existe => {
-        if (!existe) {
-            const peticion = indexedDB.open(baseDatos, 1);
+    return new Promise((resolve, reject) => {
+        const peticion = indexedDB.open("despertadosDB", 1);
 
-            peticion.onupgradeneeded = (ev => {
-                db = ev.target.result;
+        peticion.onupgradeneeded = (ev => {
+            const db = ev.target.result;
 
-                db.createObjectStore("json", {
-                    autoIncrement: false
-                });
-                db.createObjectStore("fotos", {
-                    autoIncrement: false
-                })
+            db.createObjectStore("json", {
+                autoIncrement: false
             });
-        }
+            db.createObjectStore("fotos", {
+                autoIncrement: false
+            })
+        });
+        peticion.onsuccess = () => {
+            resolve(peticion.result);
+        };
+        peticion.onerror = () => {
+            reject(peticion.error);
+        };
+
     });
 }
 
-function insertDB(db, data, tabla) {
-    const transaccion = db.transaction(tabla, "readwrite");
-    const store = transaccion.objectStore(tabla);
+function getDB() {
+    if (!db) {
+        db = crearDB();
+    }
+    return db;
+}
 
-    if (store.get(1)) store.delete(1);
-    const peticion = store.add(data, 1);
+function insertDB(data, tabla) {
+    return getDB().then(db => {
+        return new Promise((resolve, reject) => {
+            const transaccion = db.transaction(tabla, "readwrite");
+            const peticion = transaccion.objectStore(tabla);
 
-    peticion.onsuccess = (e => {
-        console.log("json añadido correctamente");
-    });
-    peticion.onerror = (e => {
-        console.log("Error al añadir el json: " + e.target.error)
+            peticion.put(data, 1);
+
+            // En las operaciones de escritura se escucha a la transacción
+            transaccion.oncomplete = () => {
+                resolve();
+            };
+            transaccion.onerror = () => {
+                reject(transaccion.error);
+            };
+            transaccion.onabort = () => {
+                reject(transaccion.error);
+            };
+        });
     });
 }
 
+function selectDB(tabla, id) {
+    return getDB().then(db => {
+        return new Promise((resolve, reject) => {
+            const transaccion = db.transaction(tabla, "readonly");
+            const store = transaccion.objectStore(tabla);
+            const peticion = store.get(id);
+
+            // En las operaciones de lectura se escuchan a los datos
+            peticion.onsuccess = () => {
+                resolve(peticion.result);
+            }
+            peticion.onerror = () => {
+                reject(peticion.error);
+            };
+        });
+    });
+}
+
+/*
 document.addEventListener("DOMContentLoaded", function () {
-    // Crear la DB
-    crearDB();
-});
+
+});*/
