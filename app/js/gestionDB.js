@@ -31,13 +31,13 @@ function getDB() {
     return db;
 }
 
-function insertDB(data, tabla) {
+function insertDB(data, tabla, id) {
     return getDB().then(db => {
         return new Promise((resolve, reject) => {
             const transaccion = db.transaction(tabla, "readwrite");
             const peticion = transaccion.objectStore(tabla);
 
-            peticion.put(data, 1);
+            peticion.put(data, id);
 
             // En las operaciones de escritura se escucha a la transacción
             transaccion.oncomplete = () => {

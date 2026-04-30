@@ -1,24 +1,24 @@
-function guardarImagen(nombreImagen, ev, lugarImagen, id) {
+async function guardarImagen(nombreImagen, ev, lugarImagen, id) {
     let file = ev.target.files[0];
     if (!file) return;
 
     let reader = new FileReader();
-    reader.onload = function () {
-        localStorage.setItem(nombreImagen, reader.result);
+    reader.onload = async () => {
+        const imagen = reader.result;
 
-        let json = localStorage.getItem("personajeJSON");
+        await insertDB(imagen, "fotos", nombreImagen);
+
+        const json = await selectDB("json", 1);
         if (json) {
-            json = JSON.parse(json);
-
             if (nombreImagen === "imagen_personaje") {
-                json.foto = localStorage.getItem(nombreImagen);
+                json.foto = imagen;
             } else if (nombreImagen === "imagen_persona") {
-                json.persona.foto = localStorage.getItem(nombreImagen);
+                json.persona.foto = imagen;
             }
-            localStorage.setItem("personajeJSON", JSON.stringify(json));
-        }
 
-        cargarImagen(nombreImagen, lugarImagen, id);
+            await insertDB(json, "json", 1);
+        }
+        await cargarImagen(imagen, lugarImagen, id);
     };
     reader.readAsDataURL(file);
 }
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Hay que envolver para poder pasar parámetros
     document.getElementById("character-image-input")
         .addEventListener("change", function (ev) {
-            guardarImagen(
+            void guardarImagen(
                 "imagen_personaje",
                 ev,
                 document.getElementById("name-container"),
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.getElementById("persona-image-input")
         .addEventListener("change", function (ev) {
-            guardarImagen(
+            void guardarImagen(
                 "imagen_persona",
                 ev,
                 document.getElementById("persona-name-container"),

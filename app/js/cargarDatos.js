@@ -34,7 +34,7 @@ function leerJSON(archivo, callback) {
         let texto = event.target.result;
         let datos = JSON.parse(texto);
 
-        insertDB(datos, "json");
+        insertDB(datos, "json", 1);
 
         try {
             callback(datos);
@@ -83,9 +83,9 @@ function ponerJSONenElHTML(datos) {
     document.getElementById("persona-resources-container").innerHTML =
         crearContenidoTarjeta(datos.persona, "persona-resources-container");
 
-    cargarImagen(datos.foto, document
+    void cargarImagen(datos.foto, document
         .getElementById("name-container"), "character-image");
-    cargarImagen(datos.persona.foto, document
+    void cargarImagen(datos.persona.foto, document
         .getElementById("persona-name-container"), "persona-image");
 }
 
@@ -99,7 +99,7 @@ function crearHTML(lista, clases) {
     }).join('');
 }
 
-function cargarImagen(imagen, lugarImagen, id) {
+async function cargarImagen(imagen, lugarImagen, id) {
     let img = document.getElementById(id);
 
     if (!img) {
@@ -109,18 +109,16 @@ function cargarImagen(imagen, lugarImagen, id) {
     }
 
     if (id === "character-image") {
-        let guardada = localStorage.getItem("imagen_personaje");
+        let guardada = await selectDB("fotos", "imagen_personaje");
         if (guardada) {
             img.src = guardada;
-            return;
         }
     }
 
     if (id === "persona-image") {
-        let guardada = localStorage.getItem("imagen_persona");
+        let guardada = await selectDB("fotos", "imagen_persona");
         if (guardada) {
             img.src = guardada;
-            return;
         }
     }
 
@@ -219,9 +217,9 @@ function cargarJSONDesdeDB() {
 
 document.addEventListener("DOMContentLoaded", function () {
     // Por si se hace F5 sin que haya un JSON
-    cargarImagen("imagen_personaje", document
+    void cargarImagen("imagen_personaje", document
         .getElementById("name-container"), "character-image");
-    cargarImagen("imagen_persona", document
+    void cargarImagen("imagen_persona", document
         .getElementById("persona-name-container"), "persona-image");
 
     cargarJSONDesdeDB();
