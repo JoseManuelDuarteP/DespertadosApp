@@ -23,7 +23,8 @@
                     <div class="panel">
                         <div class="edit-personaje">
                             <h2>Estadísticas</h2>
-                            <button id="btn-edit-stats-personaje" class="edit-btn">
+                            <button id="btn-edit-stats-personaje" class="edit-btn open"
+                                    data-modal="menu-cuerpo-personaje">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -51,7 +52,8 @@
                         <!-- Vida por partes -->
                         <div class="edit-header">
                             <h4>Cuerpo</h4>
-                            <button id="btn-edit-cuerpo-personaje" class="edit-btn">
+                            <button id="btn-edit-cuerpo-personaje" class="edit-btn open"
+                                    data-modal="menu-cuerpo-personaje">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -102,7 +104,8 @@
                         <!-- Habilidades -->
                         <div class="edit-header">
                             <h4>Habilidades</h4>
-                            <button id="btn-edit-habilidades-personaje" class="edit-btn">
+                            <button id="btn-edit-habilidades-personaje" class="edit-btn open"
+                                    data-modal="menu-habilidades-personaje">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -126,7 +129,8 @@
                     <div class="panel">
                         <div class="edit-header">
                             <h2>Inventario</h2>
-                            <button id="btn-edit-inventario" class="edit-btn">
+                            <button id="btn-edit-inventario" class="edit-btn open"
+                                    data-modal="menu-inventario">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -147,13 +151,15 @@
                     </div>
 
                     <!-- MISIONES -->
-                    <div class="panel" id="mission-list">
+                    <div class="panel">
                         <div class="edit-header">
                             <h2>Misiones</h2>
-                            <button id="btn-edit-misiones" class="edit-btn">
+                            <button id="btn-edit-misiones" class="edit-btn open"
+                                    data-modal="menu-misiones">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
+                        <div id="mission-list">
 <!--                        <div class="mission">-->
 <!--                            <h5>Derrota al jefe</h5>-->
 <!--                            <p>Encuentra y vence al enemigo principal.</p>-->
@@ -162,6 +168,7 @@
 <!--                            <h5>Explorar zona</h5>-->
 <!--                            <p>Descubre el mapa completo.</p>-->
 <!--                        </div>-->
+                        </div>
                     </div>
                 </div>
 
@@ -170,7 +177,8 @@
                     <div class="panel persona-panel">
                         <div class="edit-header">
                             <h4>Persona</h4>
-                            <button id="btn-edit-stats-persona" class="edit-btn">
+                            <button id="btn-edit-stats-persona" class="edit-btn open"
+                                    data-modal="menu-stats-persona">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -198,7 +206,8 @@
                         <!-- Recursos Persona -->
                         <div class="edit-header">
                             <h4>Vida / MP</h4>
-                            <button id="btn-edit-vida-mp-persona" class="edit-btn">
+                            <button id="btn-edit-vida-mp-persona" class="edit-btn open"
+                                    data-modal="menu-vida-mp-persona">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -222,7 +231,8 @@
 
                         <div class="edit-header">
                             <h4>Debilidades</h4>
-                            <button id="btn-edit-debilidades-persona" class="edit-btn">
+                            <button id="btn-edit-debilidades-persona" class="edit-btn open"
+                                    data-modal="menu-debilidades-persona">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -247,7 +257,8 @@
 
                         <div class="edit-header">
                             <h4>Habilidades</h4>
-                            <button id="btn-edit-habilidades-persona" class="edit-btn">
+                            <button id="btn-edit-habilidades-persona" class="edit-btn open"
+                                    data-modal="menu-habilidades-persona">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -282,7 +293,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Cuerpo del personaje</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-cuerpo-personaje">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-health-grid">
@@ -291,7 +303,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-cuerpo-personaje">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -300,7 +313,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Habilidades del personaje</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-habilidades-personaje">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-skill-list">
@@ -309,7 +323,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-habilidades-personaje">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -318,7 +333,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Inventario</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-inventario">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-inventory-list">
@@ -327,7 +343,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-inventario">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -336,7 +353,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Misiones</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-misiones">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-mission-list">
@@ -345,7 +363,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-misiones">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -354,7 +373,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Estadísticas Persona</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-stats-persona">✕</button>
                 </div>
 
                 <div class="modal-content stats-grid">
@@ -363,7 +383,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-stats-persona">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -372,7 +393,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Vida y MP</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-vida-mp-persona">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-persona-resources">
@@ -381,7 +403,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-vida-mp-persona">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -390,7 +413,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Debilidades</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-debilidades-persona">✕</button>
                 </div>
 
                 <div class="modal-content weakness-container">
@@ -399,7 +423,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-debilidades-persona">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -408,7 +433,8 @@
             <div class="modal-box">
                 <div class="modal-header">
                     <h2>Habilidades Persona</h2>
-                    <button class="modal-close">✕</button>
+                    <button class="modal-close cancel"
+                            data-modal="menu-habilidades-persona">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-persona-skill-list">
@@ -417,7 +443,8 @@
 
                 <div class="modal-footer">
                     <button class="edit-btn confirm">Guardar</button>
-                    <button class="edit-btn cancel">Cancelar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-habilidades-persona">Cancelar</button>
                 </div>
             </div>
         </div>

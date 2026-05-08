@@ -62,7 +62,7 @@ function ponerJSONenElHTML(datos) {
     document.getElementById("inventory-list").innerHTML =
         crearHTML(datos.inventario, "inventory-item");
 
-    document.getElementById("mission-list").innerHTML +=
+    document.getElementById("mission-list").innerHTML =
         crearHTML(datos.misiones, "mission")
 
     document.getElementById("persona-skill-list").innerHTML =
