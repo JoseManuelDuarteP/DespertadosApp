@@ -24,7 +24,7 @@
                         <div class="edit-personaje">
                             <h2>Estadísticas</h2>
                             <button id="btn-edit-stats-personaje" class="edit-btn open"
-                                    data-modal="menu-cuerpo-personaje">
+                                    data-modal="menu-stats-personaje">
                                 <i class="bi bi-pencil"></i> Editar
                             </button>
                         </div>
@@ -288,6 +288,29 @@
 
         <!-- === MODALS === -->
         <div class="modal-overlay" id="modal-overlay"></div>
+
+        <div class="editable-section" id="menu-stats-personaje">
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h2>Stats del personaje</h2>
+                    <button class="modal-close cancel"
+                            data-modal="menu-stats-personaje">✕</button>
+                </div>
+
+                <div class="modal-content" id="modal-stats-personaje">
+                    <form method="post" id="form-stats-personaje">
+                        <label for="nombre-personaje-input">Nombre</label>
+                        <input id="nombre-personaje-input" type="text" name="nombre-personaje">
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="edit-btn confirm">Guardar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-stats-personaje">Cancelar</button>
+                </div>
+            </div>
+        </div>
 
         <div class="editable-section" id="menu-cuerpo-personaje">
             <div class="modal-box">

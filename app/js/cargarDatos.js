@@ -83,6 +83,7 @@ function ponerJSONenElHTML(datos) {
     document.getElementById("persona-resources-container").innerHTML =
         crearContenidoTarjeta(datos.persona, "persona-resources-container");
 
+    // Imagenes
     void cargarImagen(datos.foto, document
         .getElementById("name-container"), "character-image");
     void cargarImagen(datos.persona.foto, document
