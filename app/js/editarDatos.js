@@ -15,7 +15,16 @@ async function ponerDatosEnModal(idModal) {
         case "menu-stats-personaje": {
             document.getElementById("nombre-personaje-input").value =
                 datos.nombre;
+
+            for (let stat of datos.estadisticas) {
+                document.getElementById("stat-"+stat.stat).value =
+                    stat.valor;
+            }
             break;
+        }
+
+        case "menu-cuerpo-personaje": {
+
         }
     }
 }
@@ -26,11 +35,26 @@ async function sobreEscribirJSON(idModal) {
     switch (idModal) {
         case "menu-stats-personaje": {
             datos.nombre = document.getElementById("nombre-personaje-input").value;
+
+            let stats =
+                document.querySelectorAll(`input[id^="stat-"]`)
+            let estadisticas = [];
+
+            stats.forEach((stat) => {
+                let nombreStat = stat.id.replace("stat-", "");
+                let dato = {};
+
+                dato["stat"] = nombreStat;
+                dato["valor"] = stat.value;
+                estadisticas.push(dato);
+            });
+            datos.estadisticas = estadisticas;
             break;
         }
     }
-    insertDB(datos, "json", 1);
+    await insertDB(datos, "json", 1);
     cargarJSONDesdeDB();
+    cerrarModal(idModal);
 }
 
 function cerrarModal(idModal) {
