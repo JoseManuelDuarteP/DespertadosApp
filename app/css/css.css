@@ -729,3 +729,153 @@ h4 {
     display: flex;
 }
 /* --- */
+
+/* =========================
+   ====== FORM GENERAL =====
+   ========================= */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Labels */
+form label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    color: red;
+
+    transform: skew(-5deg);
+}
+
+/* Inputs generales */
+form input,
+form textarea,
+form select {
+    background: black;
+    color: white;
+
+    border: 2px solid white;
+    padding: 6px 8px;
+
+    font-size: 0.85rem;
+
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+
+    outline: none;
+}
+
+/* Hover */
+form input:hover,
+form textarea:hover,
+form select:hover {
+    border-color: red;
+    box-shadow: 0 0 6px red;
+}
+
+/* Focus */
+form input:focus,
+form textarea:focus,
+form select:focus {
+    border-color: red;
+    box-shadow: 0 0 10px red;
+    transform: skew(-3deg) scale(1.02);
+}
+
+/* Placeholder */
+form input::placeholder,
+form textarea::placeholder {
+    color: #666;
+}
+
+/* Inputs numéricos */
+form input[type="number"] {
+    text-align: center;
+    font-weight: bold;
+    color: red;
+}
+
+/* =========================
+   ====== MODALS FORM ======
+   ========================= */
+
+/* Mejor separación dentro de modal */
+.modal-content form {
+    gap: 8px;
+}
+
+/* Scroll bonito en modals */
+.modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: red;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: black;
+}
+
+/* =========================
+   ==== STATS PERSONAJE ====
+   ========================= */
+
+#form-stats-personaje {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 12px;
+}
+
+/* Nombre ocupa toda la fila */
+#form-stats-personaje label[for="nombre-personaje-input"],
+#form-stats-personaje input[name="nombre-personaje"] {
+    grid-column: span 2;
+}
+
+/* Inputs de stats en columnas compactas */
+#form-stats-personaje input[type="number"] {
+    width: 100%;
+}
+
+/* Ajuste visual de cada bloque label + input */
+#form-stats-personaje label {
+    margin-bottom: -6px;
+}
+
+/* Hover especial estilo stats */
+#form-stats-personaje input[type="number"]:hover {
+    border-color: red;
+    box-shadow: 2px 2px 0 red;
+}
+
+/* =========================
+   ===== BOTONES FORM ======
+   ========================= */
+
+/* Para futuros botones dentro de forms */
+form button {
+    background: black;
+    border: 2px solid white;
+    color: white;
+
+    padding: 6px 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    transform: skew(-5deg);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: white;
+    color: black;
+    border-color: red;
+    box-shadow: 4px 4px 0 red;
+}
