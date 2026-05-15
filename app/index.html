@@ -302,22 +302,22 @@
                         <label for="nombre-personaje-input">Nombre</label>
                         <input id="nombre-personaje-input" type="text" name="nombre-personaje">
 
-                        <label for="stat-FUE">FUE</label>
-                        <input id="stat-FUE" type="number" name="stat-FUE">
-                        <label for="stat-DES">DES</label>
-                        <input id="stat-DES" type="number" name="stat-DES">
-                        <label for="stat-CON">CON</label>
-                        <input id="stat-CON" type="number" name="stat-CON">
-                        <label for="stat-INT">INT</label>
-                        <input id="stat-INT" type="number" name="stat-INT">
-                        <label for="stat-VOL">VOL</label>
-                        <input id="stat-VOL" type="number" name="stat-VOL">
-                        <label for="stat-AST">AST</label>
-                        <input id="stat-AST" type="number" name="stat-AST">
-                        <label for="stat-PER">PER</label>
-                        <input id="stat-PER" type="number" name="stat-PER">
-                        <label for="stat-DEV">DEV</label>
-                        <input id="stat-DEV" type="number" name="stat-DEV">
+<!--                        <label for="stat-FUE">FUE</label>-->
+<!--                        <input id="stat-FUE" type="number" name="stat-FUE">-->
+<!--                        <label for="stat-DES">DES</label>-->
+<!--                        <input id="stat-DES" type="number" name="stat-DES">-->
+<!--                        <label for="stat-CON">CON</label>-->
+<!--                        <input id="stat-CON" type="number" name="stat-CON">-->
+<!--                        <label for="stat-INT">INT</label>-->
+<!--                        <input id="stat-INT" type="number" name="stat-INT">-->
+<!--                        <label for="stat-VOL">VOL</label>-->
+<!--                        <input id="stat-VOL" type="number" name="stat-VOL">-->
+<!--                        <label for="stat-AST">AST</label>-->
+<!--                        <input id="stat-AST" type="number" name="stat-AST">-->
+<!--                        <label for="stat-PER">PER</label>-->
+<!--                        <input id="stat-PER" type="number" name="stat-PER">-->
+<!--                        <label for="stat-DEV">DEV</label>-->
+<!--                        <input id="stat-DEV" type="number" name="stat-DEV">-->
                     </form>
                 </div>
 
@@ -340,6 +340,19 @@
 
                 <div class="modal-content" id="modal-health-grid">
                     <form method="post" id="form-cuerpo-personaje">
+
+                        <div id="labels-cuerpo" class="form-group-inline">
+                            <label>Parte</label>
+                            <label>Actual</label>
+                            <label>Máximo</label>
+                        </div>
+
+                        <!-- Repetible -->
+                        <div id="inputs-cuerpo" class="form-row-3">
+                            <input type="text" placeholder="Cabeza" name="parte">
+                            <input type="number" placeholder="40" name="actual">
+                            <input type="number" placeholder="50" name="maximo">
+                        </div>
 
                     </form>
                 </div>

@@ -1,6 +1,7 @@
 function abrirModal(idModal) {
     let overlay = document.getElementById("modal-overlay");
     let modal = document.getElementById(idModal);
+    backUpModal = modal.cloneNode(true);
 
     void ponerDatosEnModal(idModal);
 
@@ -13,18 +14,87 @@ async function ponerDatosEnModal(idModal) {
 
     switch (idModal) {
         case "menu-stats-personaje": {
-            document.getElementById("nombre-personaje-input").value =
-                datos.nombre;
+            let inputNombre = document.getElementById("nombre-personaje-input");
+            if(!inputNombre) {
+                let labelNombre = document.createElement("label");
+                labelNombre.setAttribute("for", "nombre-personaje-input");
 
+                inputNombre = document.createElement("input");
+                inputNombre.setAttribute("type", "text");
+                inputNombre.setAttribute("id", "nombre-personaje-input");
+                inputNombre.setAttribute("name", "nombre-personaje");
+
+                labelNombre.textContent = "Nombre";
+                inputNombre.value = datos.nombre;
+
+                document.getElementById("form-stats-personaje").appendChild(labelNombre);
+                document.getElementById("form-stats-personaje").appendChild(inputNombre);
+            }
+
+            let labelNombreStat;
+            let inputStat = document.getElementById("stat-"+datos.estadisticas[0].stat);
+            if (!inputStat)
             for (let stat of datos.estadisticas) {
-                document.getElementById("stat-"+stat.stat).value =
-                    stat.valor;
+                let nombreStat = "stat-"+stat.stat;
+
+                labelNombreStat = document.createElement("label");
+                labelNombreStat.setAttribute("for", nombreStat);
+
+                inputStat = document.createElement("input");
+                inputStat.setAttribute("id", nombreStat);
+                inputStat.setAttribute("type", "number");
+                inputStat.setAttribute("name", nombreStat);
+
+                labelNombreStat.textContent = stat.stat;
+                inputStat.value = stat.valor;
+
+                document.getElementById("form-stats-personaje").appendChild(labelNombreStat);
+                document.getElementById("form-stats-personaje").appendChild(inputStat);
             }
             break;
         }
 
         case "menu-cuerpo-personaje": {
+            let labelParte, labelAct, labelMax;
+            let inputParte = document.getElementById("parte-"+datos.vida[0].parte);
+            if (!inputParte)
+            for (let parte of datos.vida) {
+                let nombreParte = "parte-"+parte.parte;
+                let nombreParteAct = nombreParte+"-actual";
+                let nombreParteMax = nombreParte+"-maximo";
 
+                labelParte = document.createElement("label");
+                labelAct = document.createElement("label");
+                labelMax = document.createElement("label");
+
+                labelParte.setAttribute("for", nombreParte);
+                labelAct.setAttribute("for", nombreParteAct);
+                labelMax.setAttribute("for", nombreParteMax);
+
+                inputParte = document.createElement("input");
+                inputParte.setAttribute("id", nombreParte);
+                inputParte.setAttribute("type", "text");
+                inputParte.setAttribute("name", nombreParte);
+
+                let inputAct = document.createElement("input");
+                inputAct.setAttribute("id", nombreParteAct);
+                inputAct.setAttribute("type", "number");
+                inputAct.setAttribute("name", nombreParteAct);
+
+                let inputMax = document.createElement("input");
+                inputMax.setAttribute("id", nombreParteMax);
+                inputMax.setAttribute("type", "number");
+                inputMax.setAttribute("name", nombreParteMax);
+
+                document.getElementById("labels-cuerpo").appendChild(labelParte);
+                document.getElementById("labels-cuerpo").appendChild(labelAct);
+                document.getElementById("labels-cuerpo").appendChild(labelMax);
+
+                document.getElementById("inputs-cuerpo").appendChild(inputParte);
+                document.getElementById("inputs-cuerpo").appendChild(inputAct);
+                document.getElementById("inputs-cuerpo").appendChild(inputMax);
+            }
+            break;
         }
     }
 }
@@ -63,6 +133,14 @@ function cerrarModal(idModal) {
 
     overlay.classList.remove("active");
     modal.classList.remove("active");
+
+    limpiarContenidoDinamico();
+}
+
+function limpiarContenidoDinamico() {
+    document.getElementById("form-stats-personaje").innerHTML = "";
+    document.getElementById("labels-cuerpo").innerHTML = "";
+    document.getElementById("inputs-cuerpo").innerHTML = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

@@ -879,3 +879,54 @@ form button:hover {
     border-color: red;
     box-shadow: 4px 4px 0 red;
 }
+
+/* ==== FORM LAYOUTS ==== */
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.form-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+}
+
+.form-group-inline {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    font-size: 0.7rem;
+    color: #aaa;
+    text-align: center;
+}
+
+/* Bloques de formulario */
+.skill-form,
+.inventory-form,
+.mission-form,
+.weakness-form {
+    border: 2px solid red;
+    padding: 10px;
+    background: #000;
+    transform: skew(-3deg);
+}
+
+/* Textareas */
+textarea {
+    resize: none;
+    min-height: 60px;
+}
+
+/* Stats persona compactos */
+.stats-form-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+/* Select custom */
+select {
+    cursor: pointer;
+}
