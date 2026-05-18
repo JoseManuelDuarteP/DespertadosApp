@@ -342,16 +342,16 @@
                     <form method="post" id="form-cuerpo-personaje">
 
                         <div id="labels-cuerpo" class="form-group-inline">
-                            <label>Parte</label>
-                            <label>Actual</label>
-                            <label>Máximo</label>
+<!--                            <label>Parte</label>-->
+<!--                            <label>Actual</label>-->
+<!--                            <label>Máximo</label>-->
                         </div>
 
                         <!-- Repetible -->
                         <div id="inputs-cuerpo" class="form-row-3">
-                            <input type="text" placeholder="Cabeza" name="parte">
-                            <input type="number" placeholder="40" name="actual">
-                            <input type="number" placeholder="50" name="maximo">
+<!--                            <input type="text" placeholder="Cabeza" name="parte">-->
+<!--                            <input type="number" placeholder="40" name="actual">-->
+<!--                            <input type="number" placeholder="50" name="maximo">-->
                         </div>
 
                     </form>
@@ -375,7 +375,19 @@
                 </div>
 
                 <div class="modal-content" id="modal-skill-list">
-                    <!-- skill-card character-skill -->
+                    <form id="form-habilidades-personaje">
+
+                        <div class="skill-form">
+                            <input type="text" placeholder="Nombre habilidad" name="nombre">
+                            <textarea placeholder="Descripción" name="detalles"></textarea>
+
+                            <div class="form-row-3">
+                                <input type="number" placeholder="Nivel" name="nivel">
+                                <input type="number" placeholder="Tier" name="tier">
+                                <input type="text" placeholder="Stat (FUE, INT...)" name="stat">
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -396,7 +408,20 @@
                 </div>
 
                 <div class="modal-content" id="modal-inventory-list">
-                    <!-- inventory-item -->
+                    <form id="form-inventario">
+
+                        <div class="inventory-form">
+
+                            <input type="text" placeholder="Nombre" name="nombre">
+
+                            <div class="form-row-2">
+                                <input type="number" placeholder="Cantidad" name="cantidad">
+                                <input type="text" placeholder="Descripción corta" name="descripcion">
+                            </div>
+
+                        </div>
+
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -417,7 +442,17 @@
                 </div>
 
                 <div class="modal-content" id="modal-mission-list">
-                    <!-- mission -->
+                    <form id="form-misiones">
+
+                        <div class="mission-form">
+
+                            <input type="text" placeholder="Nombre misión" name="nombre">
+
+                            <textarea placeholder="Descripción" name="detalles"></textarea>
+
+                        </div>
+
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -438,7 +473,18 @@
                 </div>
 
                 <div class="modal-content stats-grid">
-                    <!-- stat -->
+                    <form id="form-stats-persona" class="stats-form-grid">
+                    <!-- ESTE HAY QUE CAMBIARLO -->
+                        <input type="number" placeholder="FUE" name="FUE">
+                        <input type="number" placeholder="DES" name="DES">
+                        <input type="number" placeholder="CON" name="CON">
+                        <input type="number" placeholder="INT" name="INT">
+                        <input type="number" placeholder="VOL" name="VOL">
+                        <input type="number" placeholder="AST" name="AST">
+                        <input type="number" placeholder="PER" name="PER">
+                        <input type="number" placeholder="DEV" name="DEV">
+
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -459,7 +505,21 @@
                 </div>
 
                 <div class="modal-content" id="modal-persona-resources">
-                    <!-- persona-bar -->
+                    <form id="form-vida-mp-persona">
+
+                        <h5>HP</h5>
+                        <div class="form-row-2">
+                            <input type="number" placeholder="Actual" name="hp-actual">
+                            <input type="number" placeholder="Máximo" name="hp-max">
+                        </div>
+
+                        <h5>MP</h5>
+                        <div class="form-row-2">
+                            <input type="number" placeholder="Actual" name="mp-actual">
+                            <input type="number" placeholder="Máximo" name="mp-max">
+                        </div>
+
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -480,7 +540,24 @@
                 </div>
 
                 <div class="modal-content weakness-container">
-                    <!-- weakness-item -->
+                    <form id="form-debilidades-persona">
+
+                        <div class="weakness-form">
+
+                            <input type="text" placeholder="Elemento (Fuego...)" name="nombre">
+
+                            <select name="tipo">
+                                <option value="normal">Normal</option>
+                                <option value="weak">Débil</option>
+                                <option value="resist">Resiste</option>
+                                <option value="immune">Inmune</option>
+                                <option value="absorb">Absorbe</option>
+                                <option value="reflect">Refleja</option>
+                            </select>
+
+                        </div>
+
+                    </form>
                 </div>
 
                 <div class="modal-footer">
@@ -501,7 +578,19 @@
                 </div>
 
                 <div class="modal-content" id="modal-persona-skill-list">
-                    <!-- skill-card -->
+                    <form id="form-habilidades-persona">
+
+                        <div class="skill-form">
+
+                            <input type="text" placeholder="Nombre" name="nombre">
+
+                            <input type="number" placeholder="Nivel" name="nivel">
+
+                            <textarea placeholder="Descripción" name="detalles"></textarea>
+
+                        </div>
+
+                    </form>
                 </div>
 
                 <div class="modal-footer">

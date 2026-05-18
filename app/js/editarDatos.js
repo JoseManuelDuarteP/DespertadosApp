@@ -57,42 +57,51 @@ async function ponerDatosEnModal(idModal) {
         case "menu-cuerpo-personaje": {
             let labelParte, labelAct, labelMax;
             let inputParte = document.getElementById("parte-"+datos.vida[0].parte);
-            if (!inputParte)
-            for (let parte of datos.vida) {
-                let nombreParte = "parte-"+parte.parte;
-                let nombreParteAct = nombreParte+"-actual";
-                let nombreParteMax = nombreParte+"-maximo";
+            if (!inputParte) {
+                for (let parte of datos.vida) {
+                    let nombreParte = "parte-"+parte.parte;
+                    let nombreParteAct = nombreParte+"-actual";
+                    let nombreParteMax = nombreParte+"-maximo";
 
-                labelParte = document.createElement("label");
-                labelAct = document.createElement("label");
-                labelMax = document.createElement("label");
+                    labelParte = document.createElement("label");
+                    labelAct = document.createElement("label");
+                    labelMax = document.createElement("label");
 
-                labelParte.setAttribute("for", nombreParte);
-                labelAct.setAttribute("for", nombreParteAct);
-                labelMax.setAttribute("for", nombreParteMax);
+                    labelParte.setAttribute("for", nombreParte);
+                    labelAct.setAttribute("for", nombreParteAct);
+                    labelMax.setAttribute("for", nombreParteMax);
 
-                inputParte = document.createElement("input");
-                inputParte.setAttribute("id", nombreParte);
-                inputParte.setAttribute("type", "text");
-                inputParte.setAttribute("name", nombreParte);
+                    inputParte = document.createElement("input");
+                    inputParte.setAttribute("id", nombreParte);
+                    inputParte.setAttribute("type", "text");
+                    inputParte.setAttribute("name", nombreParte);
 
-                let inputAct = document.createElement("input");
-                inputAct.setAttribute("id", nombreParteAct);
-                inputAct.setAttribute("type", "number");
-                inputAct.setAttribute("name", nombreParteAct);
+                    let inputAct = document.createElement("input");
+                    inputAct.setAttribute("id", nombreParteAct);
+                    inputAct.setAttribute("type", "number");
+                    inputAct.setAttribute("name", nombreParteAct);
 
-                let inputMax = document.createElement("input");
-                inputMax.setAttribute("id", nombreParteMax);
-                inputMax.setAttribute("type", "number");
-                inputMax.setAttribute("name", nombreParteMax);
+                    let inputMax = document.createElement("input");
+                    inputMax.setAttribute("id", nombreParteMax);
+                    inputMax.setAttribute("type", "number");
+                    inputMax.setAttribute("name", nombreParteMax);
 
-                document.getElementById("labels-cuerpo").appendChild(labelParte);
-                document.getElementById("labels-cuerpo").appendChild(labelAct);
-                document.getElementById("labels-cuerpo").appendChild(labelMax);
+                    inputParte.value = parte.parte;
+                    inputAct.value = parte.actual;
+                    inputMax.value = parte.maximo;
 
-                document.getElementById("inputs-cuerpo").appendChild(inputParte);
-                document.getElementById("inputs-cuerpo").appendChild(inputAct);
-                document.getElementById("inputs-cuerpo").appendChild(inputMax);
+                    document.getElementById("labels-cuerpo").appendChild(labelParte);
+                    document.getElementById("labels-cuerpo").appendChild(labelAct);
+                    document.getElementById("labels-cuerpo").appendChild(labelMax);
+
+                    document.getElementById("inputs-cuerpo").appendChild(inputParte);
+                    document.getElementById("inputs-cuerpo").appendChild(inputAct);
+                    document.getElementById("inputs-cuerpo").appendChild(inputMax);
+                }
+
+                labelParte.textContent = "Parte";
+                labelAct.textContent = "Actual";
+                labelMax.textContent = "Máximo";
             }
             break;
         }
@@ -119,6 +128,30 @@ async function sobreEscribirJSON(idModal) {
                 estadisticas.push(dato);
             });
             datos.estadisticas = estadisticas;
+            break;
+        }
+
+        case "menu-cuerpo-personaje": {
+            let nombreParte =
+                document.querySelectorAll(`input[id^="parte-"][type="text"]`);
+            let vidaAct =
+                document.querySelectorAll(`input[id$="-actual"]`);
+            let vidaMax =
+                document.querySelectorAll(`input[id$="-maximo"]`);
+            let partes = [];
+
+            for (let i = 0; i < nombreParte.length; i++) {
+                let dato = {};
+                let parte = nombreParte[i].value;
+                let act = vidaAct[i].value;
+                let max = vidaMax[i].value;
+
+                dato["parte"] = parte;
+                dato["maximo"] = parseInt(max);
+                dato["actual"] = parseInt(act);
+                partes.push(dato);
+            }
+            datos.vida = partes;
             break;
         }
     }
