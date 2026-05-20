@@ -1,23 +1,3 @@
-const listaDebilidades = {
-    WEAK: "Débil",
-    RESIST: "Resistente",
-    IMMUNE: "Inmune",
-    ABSORB: "Absorbe",
-    REFLECT: "Refleja",
-    NORMAL: "Normal"
-}
-
-/*const listaStats = {
-    FUE: "Fuerza",
-    DES: "Destreza",
-    CON: "Constitución",
-    INT: "Inteligencia",
-    VOL: "Voluntad",
-    AST: "Astra",
-    PER: "Percepción",
-    DEV: "Devoción"
-}*/
-
 function cargarJSON() {
     let archivo = this.files[0];
     if (!archivo) return;
@@ -91,11 +71,11 @@ function ponerJSONenElHTML(datos) {
 }
 
 function crearHTML(lista, clases) {
-    return lista.map(x => {
+    return lista.map((x, indexArray) => {
         let clase = clases + comprobarClaseCss(x, clases);
 
         return `<div class="${clase}">
-                    ${crearContenidoTarjeta(x, clases)}
+                    ${crearContenidoTarjeta(x, clases, indexArray)}
                 </div>`;
     }).join('');
 }
@@ -137,11 +117,17 @@ function comprobarClaseCss(x, clases) {
     }
 }
 
-function crearContenidoTarjeta(x, clases) {
+function crearContenidoTarjeta(x, clases, indexArray) {
     switch (clases) {
 
         case "skill-card character-skill":
-            return `
+            return `      
+                <button class="edit-btn skill-edit-btn open"
+                        data-modal="menu-habilidades-personaje"
+                        data-index_habilidad=${indexArray}>
+                    <i class="bi bi-pencil"></i>
+                </button>
+
                 <h5>${x.nombre} +${x.nivel * x.tier}</h5>
                 <p>${x.detalles}</p>
                 <div class="skill-meta">

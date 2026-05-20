@@ -1,5 +1,3 @@
-let db = null; //Global para acceso a DB
-
 function crearDB() {
     return new Promise((resolve, reject) => {
         const peticion = indexedDB.open("despertadosDB", 1);
@@ -70,8 +68,3 @@ function selectDB(tabla, id) {
         });
     });
 }
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-
-});*/

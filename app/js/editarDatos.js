@@ -1,108 +1,110 @@
-function abrirModal(idModal) {
+function abrirModal(idModal, indiceArray) {
     let overlay = document.getElementById("modal-overlay");
     let modal = document.getElementById(idModal);
-    backUpModal = modal.cloneNode(true);
 
-    void ponerDatosEnModal(idModal);
+    void ponerDatosEnModal(idModal, indiceArray);
 
     overlay.classList.add("active");
     modal.classList.add("active");
 }
 
-async function ponerDatosEnModal(idModal) {
+async function ponerDatosEnModal(idModal, indiceArray) {
     let datos = await selectDB("json", 1);
 
     switch (idModal) {
         case "menu-stats-personaje": {
-            let inputNombre = document.getElementById("nombre-personaje-input");
-            if(!inputNombre) {
-                let labelNombre = document.createElement("label");
-                labelNombre.setAttribute("for", "nombre-personaje-input");
+            let html = `
+                <label for="nombre-personaje-input">Nombre</label>
+                <input id="nombre-personaje-input" type="text" name="nombre-personaje">
+            `;
 
-                inputNombre = document.createElement("input");
-                inputNombre.setAttribute("type", "text");
-                inputNombre.setAttribute("id", "nombre-personaje-input");
-                inputNombre.setAttribute("name", "nombre-personaje");
-
-                labelNombre.textContent = "Nombre";
-                inputNombre.value = datos.nombre;
-
-                document.getElementById("form-stats-personaje").appendChild(labelNombre);
-                document.getElementById("form-stats-personaje").appendChild(inputNombre);
-            }
-
-            let labelNombreStat;
-            let inputStat = document.getElementById("stat-"+datos.estadisticas[0].stat);
-            if (!inputStat)
             for (let stat of datos.estadisticas) {
-                let nombreStat = "stat-"+stat.stat;
+                html += `
+                    <label for="stat-${stat.stat}">${stat.stat}</label>
+                    <input id="stat-${stat.stat}" type="number" name="stat-${stat.stat}">
+                `;
+            }
+            document.getElementById("form-stats-personaje").innerHTML = html;
 
-                labelNombreStat = document.createElement("label");
-                labelNombreStat.setAttribute("for", nombreStat);
-
-                inputStat = document.createElement("input");
-                inputStat.setAttribute("id", nombreStat);
-                inputStat.setAttribute("type", "number");
-                inputStat.setAttribute("name", nombreStat);
-
-                labelNombreStat.textContent = stat.stat;
-                inputStat.value = stat.valor;
-
-                document.getElementById("form-stats-personaje").appendChild(labelNombreStat);
-                document.getElementById("form-stats-personaje").appendChild(inputStat);
+            document.getElementById("nombre-personaje-input").value = datos.nombre;
+            for (let stat of datos.estadisticas) {
+                document.getElementById(`stat-${stat.stat}`).value = stat.valor;
             }
             break;
         }
 
         case "menu-cuerpo-personaje": {
-            let labelParte, labelAct, labelMax;
-            let inputParte = document.getElementById("parte-"+datos.vida[0].parte);
-            if (!inputParte) {
-                for (let parte of datos.vida) {
-                    let nombreParte = "parte-"+parte.parte;
-                    let nombreParteAct = nombreParte+"-actual";
-                    let nombreParteMax = nombreParte+"-maximo";
+            document.getElementById("labels-cuerpo").innerHTML =`
+                <label>Parte</label>
+                <label>Actual</label>
+                <label>Máximo</label>
+            `;
 
-                    labelParte = document.createElement("label");
-                    labelAct = document.createElement("label");
-                    labelMax = document.createElement("label");
-
-                    labelParte.setAttribute("for", nombreParte);
-                    labelAct.setAttribute("for", nombreParteAct);
-                    labelMax.setAttribute("for", nombreParteMax);
-
-                    inputParte = document.createElement("input");
-                    inputParte.setAttribute("id", nombreParte);
-                    inputParte.setAttribute("type", "text");
-                    inputParte.setAttribute("name", nombreParte);
-
-                    let inputAct = document.createElement("input");
-                    inputAct.setAttribute("id", nombreParteAct);
-                    inputAct.setAttribute("type", "number");
-                    inputAct.setAttribute("name", nombreParteAct);
-
-                    let inputMax = document.createElement("input");
-                    inputMax.setAttribute("id", nombreParteMax);
-                    inputMax.setAttribute("type", "number");
-                    inputMax.setAttribute("name", nombreParteMax);
-
-                    inputParte.value = parte.parte;
-                    inputAct.value = parte.actual;
-                    inputMax.value = parte.maximo;
-
-                    document.getElementById("labels-cuerpo").appendChild(labelParte);
-                    document.getElementById("labels-cuerpo").appendChild(labelAct);
-                    document.getElementById("labels-cuerpo").appendChild(labelMax);
-
-                    document.getElementById("inputs-cuerpo").appendChild(inputParte);
-                    document.getElementById("inputs-cuerpo").appendChild(inputAct);
-                    document.getElementById("inputs-cuerpo").appendChild(inputMax);
-                }
-
-                labelParte.textContent = "Parte";
-                labelAct.textContent = "Actual";
-                labelMax.textContent = "Máximo";
+            let html = ``;
+            for (let parte of datos.vida) {
+                html += `
+                    <input id="parte-${parte.parte}" type="text" name="parte-${parte.parte}">
+                    <input id="parte-${parte.parte}-actual" type="number" name="parte-${parte.parte}-actual">
+                    <input id="parte-${parte.parte}-maximo" type="number" name="parte-${parte.parte}-maximo">
+                `;
             }
+            document.getElementById("inputs-cuerpo").innerHTML = html;
+
+            for (let parte of datos.vida) {
+                document.getElementById(`parte-${parte.parte}`).value =
+                    parte.parte;
+                document.getElementById(`parte-${parte.parte}-actual`).value =
+                    parte.actual;
+                document.getElementById(`parte-${parte.parte}-maximo`).value =
+                    parte.maximo;
+            }
+            break;
+        }
+
+        case "menu-habilidades-personaje": {
+            let habilidad = datos.habilidades[indiceArray];
+            document.getElementById("skill-form-header").innerHTML =`
+                <input id="habilidad-nombre-input" type="text" 
+                placeholder="Nombre habilidad" name="habilidad-nombre">
+            `;
+            document.getElementById("skill-form-body").innerHTML =`
+                <textarea id="habilidad-descripcion-input" placeholder="Descripción de la habilidad..." 
+                name="detalles"></textarea>
+            `;
+            document.getElementById("skill-form-stats").innerHTML =`
+                <div class="stat-input">
+                    <label>Nivel</label>
+                    <input id="habilidad-nivel-input" type="number" name="nivel" placeholder="0">
+                </div>
+
+                <div class="stat-input">
+                    <label>Tier</label>
+                    <input id="habilidad-tier-input" type="number" name="tier" placeholder="0">
+                </div>
+
+                <div class="stat-input">
+                    <label>Stat</label>
+                    <select id="habilidad-stat-input" name="stat">
+                        <option disabled selected></option>
+                    </select>
+                </div>
+            `;
+
+            for (let stat in listaStats) {
+                document.getElementById("habilidad-stat-input").innerHTML +=`
+                    <option value=${stat}>${stat}</option>
+                `;
+            }
+            document.getElementById("habilidad-nombre-input").value =
+                habilidad.nombre;
+            document.getElementById("habilidad-descripcion-input").value =
+                habilidad.detalles;
+            document.getElementById("habilidad-nivel-input").value =
+                habilidad.nivel;
+            document.getElementById("habilidad-tier-input").value =
+                habilidad.tier;
+            document.getElementById("habilidad-stat-input").value =
+                habilidad.stat;
             break;
         }
     }
@@ -154,6 +156,10 @@ async function sobreEscribirJSON(idModal) {
             datos.vida = partes;
             break;
         }
+
+        case "menu-habilidades-personaje": {
+
+        }
     }
     await insertDB(datos, "json", 1);
     cargarJSONDesdeDB();
@@ -177,21 +183,28 @@ function limpiarContenidoDinamico() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    let editBtns = document.getElementsByClassName("open");
-    for (let btn of editBtns) {
-        let idModal = btn.dataset.modal;
-        if (idModal) btn.onclick = () => abrirModal(idModal);
-    }
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".open");
+        if (!btn) return;
 
-    let clsBtns = document.getElementsByClassName("cancel");
-    for (let btn of clsBtns) {
-        let idModal = btn.dataset.modal;
-        if (idModal) btn.onclick = () => cerrarModal(idModal);
-    }
+        const idModal = btn.dataset.modal;
+        const indiceArray = btn.dataset.index_habilidad;
+        if (idModal) abrirModal(idModal, indiceArray);
+    });
 
-    let confirmBtns = document.getElementsByClassName("confirm");
-    for (let btn of confirmBtns) {
-        let idModal = btn.dataset.modal;
-        if (idModal) btn.onclick = () => sobreEscribirJSON(idModal);
-    }
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".cancel");
+        if (!btn) return;
+
+        const idModal = btn.dataset.modal;
+        if (idModal) cerrarModal(idModal);
+    });
+
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".confirm");
+        if (!btn) return;
+
+        const idModal = btn.dataset.modal;
+        if (idModal) void sobreEscribirJSON(idModal);
+    });
 });

@@ -104,9 +104,9 @@
                         <!-- Habilidades -->
                         <div class="edit-header">
                             <h4>Habilidades</h4>
-                            <button id="btn-edit-habilidades-personaje" class="edit-btn open"
+                            <button id="btn-add-habilidad-personaje" class="edit-btn create"
                                     data-modal="menu-habilidades-personaje">
-                                <i class="bi bi-pencil"></i> Editar
+                                <i class="bi bi-plus-lg"></i> Nueva
                             </button>
                         </div>
                         <div id="skill-list">
@@ -299,8 +299,8 @@
 
                 <div class="modal-content" id="modal-stats-personaje">
                     <form method="post" id="form-stats-personaje">
-                        <label for="nombre-personaje-input">Nombre</label>
-                        <input id="nombre-personaje-input" type="text" name="nombre-personaje">
+<!--                        <label for="nombre-personaje-input">Nombre</label>-->
+<!--                        <input id="nombre-personaje-input" type="text" name="nombre-personaje">-->
 
 <!--                        <label for="stat-FUE">FUE</label>-->
 <!--                        <input id="stat-FUE" type="number" name="stat-FUE">-->
@@ -377,16 +377,50 @@
                 <div class="modal-content" id="modal-skill-list">
                     <form id="form-habilidades-personaje">
 
-                        <div class="skill-form">
-                            <input type="text" placeholder="Nombre habilidad" name="nombre">
-                            <textarea placeholder="Descripción" name="detalles"></textarea>
+                        <div class="skill-form enhanced-skill-form">
 
-                            <div class="form-row-3">
-                                <input type="number" placeholder="Nivel" name="nivel">
-                                <input type="number" placeholder="Tier" name="tier">
-                                <input type="text" placeholder="Stat (FUE, INT...)" name="stat">
+                            <!-- HEADER -->
+                            <div id="skill-form-header" class="skill-form-header">
+<!--                                <input id="habilidad-nombre-input" type="text" placeholder="Nombre habilidad" name="nombre">-->
                             </div>
+
+                            <!-- DESCRIPCIÓN -->
+                            <div id="skill-form-body" class="skill-form-body">
+                                <textarea id="habilidad-descripcion-input" placeholder="Descripción de la habilidad..." name="detalles"></textarea>
+                            </div>
+
+                            <!-- STATS -->
+                            <div id="skill-form-stats" class="skill-form-stats">
+
+                                <div class="stat-input">
+                                    <label>Nivel</label>
+                                    <input id="habilidad-nivel-input" type="number" name="nivel" placeholder="0">
+                                </div>
+
+                                <div class="stat-input">
+                                    <label>Tier</label>
+                                    <input id="habilidad-tier-input" type="number" name="tier" placeholder="0">
+                                </div>
+
+                                <div class="stat-input">
+                                    <label>Stat</label>
+                                    <select id="habilidad-stat-input" name="stat">
+                                        <option disabled selected></option>
+                                        <option value="FUE">FUE</option>
+                                        <option value="DES">DES</option>
+                                        <option value="CON">CON</option>
+                                        <option value="INT">INT</option>
+                                        <option value="VOL">VOL</option>
+                                        <option value="AST">AST</option>
+                                        <option value="PER">PER</option>
+                                        <option value="DEV">DEV</option>
+                                    </select>
+                                </div>
+
+                            </div>
+
                         </div>
+
                     </form>
                 </div>
 
@@ -604,6 +638,7 @@
 
     </body>
 
+    <script type="text/javascript" src="js/globals.js"></script>
     <script type="text/javascript" src="js/gestionDB.js"></script>
     <script type="text/javascript" src="js/cargarDatos.js"></script>
     <script type="text/javascript" src="js/guardarDatos.js"></script>
