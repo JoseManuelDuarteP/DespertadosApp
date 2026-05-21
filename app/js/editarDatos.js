@@ -1,8 +1,12 @@
-function abrirModal(idModal, indiceArray) {
+function abrirModal(idModal, indiceArray, btn) {
     let overlay = document.getElementById("modal-overlay");
     let modal = document.getElementById(idModal);
 
-    void ponerDatosEnModal(idModal, indiceArray);
+    if (btn.classList.contains("open")) {
+        void ponerDatosEnModal(idModal, indiceArray);
+    } else {
+
+    }
 
     overlay.classList.add("active");
     modal.classList.add("active");
@@ -15,7 +19,8 @@ async function ponerDatosEnModal(idModal, indiceArray) {
         case "menu-stats-personaje": {
             let html = `
                 <label for="nombre-personaje-input">Nombre</label>
-                <input id="nombre-personaje-input" type="text" name="nombre-personaje">
+                <input id="nombre-personaje-input" type="text" 
+                name="nombre-personaje" value="${datos.nombre}">
             `;
 
             for (let stat of datos.estadisticas) {
@@ -26,7 +31,6 @@ async function ponerDatosEnModal(idModal, indiceArray) {
             }
             document.getElementById("form-stats-personaje").innerHTML = html;
 
-            document.getElementById("nombre-personaje-input").value = datos.nombre;
             for (let stat of datos.estadisticas) {
                 document.getElementById(`stat-${stat.stat}`).value = stat.valor;
             }
@@ -63,23 +67,28 @@ async function ponerDatosEnModal(idModal, indiceArray) {
 
         case "menu-habilidades-personaje": {
             let habilidad = datos.habilidades[indiceArray];
+
             document.getElementById("skill-form-header").innerHTML =`
+                <!-- Campo hidden para identificar la habilidad -->
+                <input id="index-habilidad" type="hidden" value="${indiceArray}">
                 <input id="habilidad-nombre-input" type="text" 
-                placeholder="Nombre habilidad" name="habilidad-nombre">
+                placeholder="Nombre habilidad" name="habilidad-nombre" value="${habilidad.nombre}">
             `;
             document.getElementById("skill-form-body").innerHTML =`
                 <textarea id="habilidad-descripcion-input" placeholder="Descripción de la habilidad..." 
-                name="detalles"></textarea>
+                name="detalles">${habilidad.detalles}</textarea>
             `;
             document.getElementById("skill-form-stats").innerHTML =`
                 <div class="stat-input">
                     <label>Nivel</label>
-                    <input id="habilidad-nivel-input" type="number" name="nivel" placeholder="0">
+                    <input id="habilidad-nivel-input" type="number" name="nivel" placeholder="0"
+                    value="${habilidad.nivel}">
                 </div>
 
                 <div class="stat-input">
                     <label>Tier</label>
-                    <input id="habilidad-tier-input" type="number" name="tier" placeholder="0">
+                    <input id="habilidad-tier-input" type="number" name="tier" placeholder="0"
+                    value="${habilidad.tier}">
                 </div>
 
                 <div class="stat-input">
@@ -95,14 +104,6 @@ async function ponerDatosEnModal(idModal, indiceArray) {
                     <option value=${stat}>${stat}</option>
                 `;
             }
-            document.getElementById("habilidad-nombre-input").value =
-                habilidad.nombre;
-            document.getElementById("habilidad-descripcion-input").value =
-                habilidad.detalles;
-            document.getElementById("habilidad-nivel-input").value =
-                habilidad.nivel;
-            document.getElementById("habilidad-tier-input").value =
-                habilidad.tier;
             document.getElementById("habilidad-stat-input").value =
                 habilidad.stat;
             break;
@@ -158,7 +159,21 @@ async function sobreEscribirJSON(idModal) {
         }
 
         case "menu-habilidades-personaje": {
+            let indexArray =
+                parseInt(document.getElementById("index-habilidad").value);
+            let habilidad = datos.habilidades[indexArray];
 
+            habilidad.nombre =
+                document.getElementById("habilidad-nombre-input").value;
+            habilidad.detalles =
+                document.getElementById("habilidad-descripcion-input").value;
+            habilidad.nivel =
+                parseInt(document.getElementById("habilidad-nivel-input").value);
+            habilidad.tier =
+                parseInt(document.getElementById("habilidad-tier-input").value);
+            habilidad.stat =
+                document.getElementById("habilidad-stat-input").value;
+            break;
         }
     }
     await insertDB(datos, "json", 1);
@@ -184,12 +199,12 @@ function limpiarContenidoDinamico() {
 
 document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (e) {
-        const btn = e.target.closest(".open");
+        const btn = e.target.closest(".open, .create");
         if (!btn) return;
 
         const idModal = btn.dataset.modal;
         const indiceArray = btn.dataset.index_habilidad;
-        if (idModal) abrirModal(idModal, indiceArray);
+        if (idModal) abrirModal(idModal, indiceArray, btn);
     });
 
     document.addEventListener("click", function (e) {
