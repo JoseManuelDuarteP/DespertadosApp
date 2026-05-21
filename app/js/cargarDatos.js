@@ -124,7 +124,7 @@ function crearContenidoTarjeta(x, clases, indexArray) {
             return `      
                 <button class="edit-btn skill-edit-btn open"
                         data-modal="menu-habilidades-personaje"
-                        data-index_habilidad=${indexArray}>
+                        data-index_array=${indexArray}>
                     <i class="bi bi-pencil"></i>
                 </button>
 
@@ -146,8 +146,8 @@ function crearContenidoTarjeta(x, clases, indexArray) {
         case "inventory-item":
             return `
                  <button class="edit-btn skill-edit-btn open"
-                        data-modal="menu-habilidades-personaje"
-                        data-index_habilidad=${indexArray}>
+                        data-modal="menu-inventario"
+                        data-index_array=${indexArray}>
                     <i class="bi bi-pencil"></i>
                 </button>
                 <h5>${x.nombre}</h5><span class="quantity">${x.cantidad}</span>

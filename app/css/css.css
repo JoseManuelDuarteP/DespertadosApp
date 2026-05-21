@@ -1032,3 +1032,51 @@ select {
     border-color: red;
     box-shadow: 0 0 6px red;
 }
+
+/* ===== INVENTARIO MEJORADO ===== */
+
+.inventory-modal .modal-box {
+    max-width: 600px;
+}
+
+/* FORM WRAPPER */
+.enhanced-inventory-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border: 2px solid red;
+    background: #000;
+    padding: 14px;
+
+    box-shadow: 6px 6px 0 red;
+    transform: skew(-3deg);
+}
+
+/* HEADER (NOMBRE) */
+.inventory-header input {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+
+    border: 2px solid red;
+}
+
+/* BODY */
+.inventory-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* TEXTAREA */
+.inventory-body textarea {
+    min-height: 80px;
+    resize: none;
+}
+
+/* MODAL CONTENT spacing fix */
+.inventory-modal .modal-content {
+    padding: 20px;
+}

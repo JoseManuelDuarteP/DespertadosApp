@@ -106,6 +106,33 @@ async function ponerDatosEnModal(idModal, indiceArray) {
                 habilidad.stat;
             break;
         }
+
+        case "menu-inventario": {
+            let item = datos.inventario[indiceArray];
+
+            document.getElementById("form-inventario").innerHTML =`
+                <div class="inventory-form enhanced-inventory-form">
+
+                    <div class="inventory-header">
+                        <!-- Campo hidden para identificar el item -->
+                        <input id="index-item" type="hidden" value="${indiceArray}">
+                        <input id="nombre-item" type="text" placeholder="Nombre del objeto" 
+                        name="nombre-item" value="${item.nombre}">
+                    </div>
+
+                    <div class="inventory-body">
+                        <textarea id="descripcion-item" placeholder="Descripción del objeto..." 
+                        name="descripcion-item">${item.descripcion}</textarea>
+                        <div class="stat-input">
+                            <label>Cantidad</label>
+                            <input id="cantidad-item" type="number" name="cantidad-item" 
+                            placeholder="0" value="${item.cantidad}">
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+        }
     }
 }
 
@@ -193,6 +220,34 @@ async function sobreEscribirJSON(idModal) {
 
             break;
         }
+
+        case "menu-inventario": {
+            let indexArray =
+                document.getElementById("index-item");
+
+            let item;
+            if (indexArray) {
+                item = datos.inventario[parseInt(indexArray.value)];
+
+                item.nombre =
+                    document.getElementById("nombre-item").value;
+                item.descripcion =
+                    document.getElementById("descripcion-item").value;
+                item.cantidad =
+                    parseInt(document.getElementById("cantidad-item").value);
+            } else {
+                item = {};
+
+                item["nombre"] =
+                    document.getElementById("nombre-item").value;
+                item["descripcion"] =
+                    document.getElementById("descripcion-item").value;
+                item["cantidad"] =
+                    parseInt(document.getElementById("cantidad-item").value);
+
+                datos.inventario.push(item);
+            }
+        }
     }
     await insertDB(datos, "json", 1);
     cargarJSONDesdeDB();
@@ -225,6 +280,11 @@ function limpiarContenidoDinamico() {
     document.getElementById("habilidad-stat-input").value = "";
     if (document.getElementById("index-habilidad"))
     document.getElementById("index-habilidad").remove();
+
+    // INVENTARIO
+    document.getElementById("nombre-item").value = "";
+    document.getElementById("descripcion-item").value = "";
+    document.getElementById("cantidad-item").value = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -233,7 +293,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!btn) return;
 
         const idModal = btn.dataset.modal;
-        const indiceArray = btn.dataset.index_habilidad;
+        const indiceArray = btn.dataset.index_array;
         if (idModal) abrirModal(idModal, indiceArray, btn);
     });
 
