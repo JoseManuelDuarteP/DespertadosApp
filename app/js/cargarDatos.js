@@ -145,6 +145,11 @@ function crearContenidoTarjeta(x, clases, indexArray) {
 
         case "inventory-item":
             return `
+                 <button class="edit-btn skill-edit-btn open"
+                        data-modal="menu-habilidades-personaje"
+                        data-index_habilidad=${indexArray}>
+                    <i class="bi bi-pencil"></i>
+                </button>
                 <h5>${x.nombre}</h5><span class="quantity">${x.cantidad}</span>
                 <p>${x.descripcion}</p>
             `;

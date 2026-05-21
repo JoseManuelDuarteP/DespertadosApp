@@ -4,8 +4,6 @@ function abrirModal(idModal, indiceArray, btn) {
 
     if (btn.classList.contains("open")) {
         void ponerDatosEnModal(idModal, indiceArray);
-    } else {
-
     }
 
     overlay.classList.add("active");
@@ -160,19 +158,39 @@ async function sobreEscribirJSON(idModal) {
 
         case "menu-habilidades-personaje": {
             let indexArray =
-                parseInt(document.getElementById("index-habilidad").value);
-            let habilidad = datos.habilidades[indexArray];
+                document.getElementById("index-habilidad");
 
-            habilidad.nombre =
-                document.getElementById("habilidad-nombre-input").value;
-            habilidad.detalles =
-                document.getElementById("habilidad-descripcion-input").value;
-            habilidad.nivel =
-                parseInt(document.getElementById("habilidad-nivel-input").value);
-            habilidad.tier =
-                parseInt(document.getElementById("habilidad-tier-input").value);
-            habilidad.stat =
-                document.getElementById("habilidad-stat-input").value;
+            let habilidad;
+            if (indexArray) {
+                habilidad = datos.habilidades[parseInt(indexArray.value)];
+
+                habilidad.nombre =
+                    document.getElementById("habilidad-nombre-input").value;
+                habilidad.detalles =
+                    document.getElementById("habilidad-descripcion-input").value;
+                habilidad.nivel =
+                    parseInt(document.getElementById("habilidad-nivel-input").value);
+                habilidad.tier =
+                    parseInt(document.getElementById("habilidad-tier-input").value);
+                habilidad.stat =
+                    document.getElementById("habilidad-stat-input").value;
+            } else {
+                habilidad = {};
+
+                habilidad["nombre"] =
+                    document.getElementById("habilidad-nombre-input").value;
+                habilidad["detalles"] =
+                    document.getElementById("habilidad-descripcion-input").value;
+                habilidad["nivel"] =
+                    parseInt(document.getElementById("habilidad-nivel-input").value);
+                habilidad["tier"] =
+                    parseInt(document.getElementById("habilidad-tier-input").value);
+                habilidad["stat"] =
+                    document.getElementById("habilidad-stat-input").value;
+
+                datos.habilidades.push(habilidad);
+            }
+
             break;
         }
     }
@@ -192,9 +210,21 @@ function cerrarModal(idModal) {
 }
 
 function limpiarContenidoDinamico() {
+    // STATS
     document.getElementById("form-stats-personaje").innerHTML = "";
+
+    // VIDA
     document.getElementById("labels-cuerpo").innerHTML = "";
     document.getElementById("inputs-cuerpo").innerHTML = "";
+
+    // HABILIDADES
+    document.getElementById("habilidad-nombre-input").value = "";
+    document.getElementById("habilidad-descripcion-input").value = "";
+    document.getElementById("habilidad-nivel-input").value = "";
+    document.getElementById("habilidad-tier-input").value = "";
+    document.getElementById("habilidad-stat-input").value = "";
+    if (document.getElementById("index-habilidad"))
+    document.getElementById("index-habilidad").remove();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
