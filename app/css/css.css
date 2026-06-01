@@ -823,10 +823,11 @@ form input[type="number"] {
 }
 
 /* =========================
-   ==== STATS PERSONAJE ====
+   ===== STATS FORMS =======
    ========================= */
 
-#form-stats-personaje {
+#form-stats-personaje,
+#form-stats-persona {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 8px 12px;
@@ -834,22 +835,27 @@ form input[type="number"] {
 
 /* Nombre ocupa toda la fila */
 #form-stats-personaje label[for="nombre-personaje-input"],
-#form-stats-personaje input[name="nombre-personaje"] {
+#form-stats-personaje input[name="nombre-personaje"],
+#form-stats-persona label[for="nombre-persona-input"],
+#form-stats-persona input[name="nombre-persona"] {
     grid-column: span 2;
 }
 
-/* Inputs de stats en columnas compactas */
-#form-stats-personaje input[type="number"] {
+/* Inputs */
+#form-stats-personaje input[type="number"],
+#form-stats-persona input[type="number"] {
     width: 100%;
 }
 
-/* Ajuste visual de cada bloque label + input */
-#form-stats-personaje label {
+/* Labels */
+#form-stats-personaje label,
+#form-stats-persona label {
     margin-bottom: -6px;
 }
 
-/* Hover especial estilo stats */
-#form-stats-personaje input[type="number"]:hover {
+/* Hover */
+#form-stats-personaje input[type="number"]:hover,
+#form-stats-persona input[type="number"]:hover {
     border-color: red;
     box-shadow: 2px 2px 0 red;
 }
@@ -974,6 +980,7 @@ select {
 
 /* Header */
 .skill-form-header input {
+    width: 100%;
     font-size: 1rem;
     font-weight: bold;
     border: 2px solid red;
@@ -982,6 +989,7 @@ select {
 
 /* Body */
 .skill-form-body textarea {
+    width: 100%;
     min-height: 70px;
 }
 
@@ -1079,4 +1087,67 @@ select {
 /* MODAL CONTENT spacing fix */
 .inventory-modal .modal-content {
     padding: 20px;
+}
+
+/* ===== INVENTARIO MISIONES ===== */
+.mission-edit-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+
+    height: 28px;
+    padding: 0 6px;
+
+    font-size: 0.8rem;
+    box-shadow: 2px 2px 0 white;
+    border-color: red;
+    color: red;
+}
+
+.mission-edit-btn:hover {
+    background: red;
+    color: black;
+    box-shadow: 3px 3px 0 white;
+}
+
+.mission-modal.modal-box {
+    max-width: 650px;
+}
+
+/* FORM WRAPPER */
+.enhanced-mission-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border: 2px solid red;
+    background: #000;
+    padding: 14px;
+
+    box-shadow: 6px 6px 0 red;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+}
+
+/* HEADER (NOMBRE) */
+.mission-header input {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid red;
+}
+
+/* BODY */
+.mission-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* TEXTAREA */
+.mission-body textarea {
+    width: 100%;
+    min-height: 80px;
+    resize: none;
 }

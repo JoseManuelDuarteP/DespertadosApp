@@ -154,9 +154,9 @@
                     <div class="panel">
                         <div class="edit-header">
                             <h2>Misiones</h2>
-                            <button id="btn-edit-misiones" class="edit-btn open"
+                            <button id="btn-add-mision" class="edit-btn create"
                                     data-modal="menu-misiones">
-                                <i class="bi bi-pencil"></i> Editar
+                                <i class="bi bi-plus-lg"></i> Nuevo
                             </button>
                         </div>
                         <div id="mission-list">
@@ -473,32 +473,30 @@
         </div>
 
         <div class="editable-section" id="menu-misiones">
-            <div class="modal-box">
+            <div class="modal-box mission-modal">
                 <div class="modal-header">
                     <h2>Misiones</h2>
-                    <button class="modal-close cancel"
-                            data-modal="menu-misiones">✕</button>
+                    <button class="modal-close cancel" data-modal="menu-misiones">✕</button>
                 </div>
 
                 <div class="modal-content" id="modal-mission-list">
                     <form id="form-misiones">
+                        <div class="mission-form enhanced-mission-form">
 
-                        <div class="mission-form">
+                            <div class="mission-header">
+                                <input id="mision-nombre-input" type="text" placeholder="Nombre de la misión" name="nombre">
+                            </div>
 
-                            <input type="text" placeholder="Nombre misión" name="nombre">
-
-                            <textarea placeholder="Descripción" name="detalles"></textarea>
-
+                            <div class="mission-body">
+                                <textarea id="mision-descripcion-input" placeholder="Descripción de la misión..." name="detalles"></textarea>
+                            </div>
                         </div>
-
                     </form>
                 </div>
 
                 <div class="modal-footer">
-                    <button class="edit-btn confirm"
-                            data-modal="menu-misiones">Guardar</button>
-                    <button class="edit-btn cancel"
-                            data-modal="menu-misiones">Cancelar</button>
+                    <button class="edit-btn confirm" data-modal="menu-misiones">Guardar</button>
+                    <button class="edit-btn cancel" data-modal="menu-misiones">Cancelar</button>
                 </div>
             </div>
         </div>
@@ -506,23 +504,32 @@
         <div class="editable-section" id="menu-stats-persona">
             <div class="modal-box">
                 <div class="modal-header">
-                    <h2>Estadísticas Persona</h2>
+                    <h2>Stats Persona</h2>
                     <button class="modal-close cancel"
                             data-modal="menu-stats-persona">✕</button>
                 </div>
 
-                <div class="modal-content stats-grid">
-                    <form id="form-stats-persona" class="stats-form-grid">
-                    <!-- ESTE HAY QUE CAMBIARLO -->
-                        <input type="number" placeholder="FUE" name="FUE">
-                        <input type="number" placeholder="DES" name="DES">
-                        <input type="number" placeholder="CON" name="CON">
-                        <input type="number" placeholder="INT" name="INT">
-                        <input type="number" placeholder="VOL" name="VOL">
-                        <input type="number" placeholder="AST" name="AST">
-                        <input type="number" placeholder="PER" name="PER">
-                        <input type="number" placeholder="DEV" name="DEV">
+                <div class="modal-content" id="modal-stats-persona">
+                    <form method="post" id="form-stats-persona">
+<!--                        <label for="nombre-personaje-input">Nombre</label>-->
+<!--                        <input id="nombre-personaje-input" type="text" name="nombre-personaje">-->
 
+<!--                        <label for="stat-FUE">FUE</label>-->
+<!--                        <input id="stat-FUE" type="number" name="stat-FUE">-->
+<!--                        <label for="stat-DES">DES</label>-->
+<!--                        <input id="stat-DES" type="number" name="stat-DES">-->
+<!--                        <label for="stat-CON">CON</label>-->
+<!--                        <input id="stat-CON" type="number" name="stat-CON">-->
+<!--                        <label for="stat-INT">INT</label>-->
+<!--                        <input id="stat-INT" type="number" name="stat-INT">-->
+<!--                        <label for="stat-VOL">VOL</label>-->
+<!--                        <input id="stat-VOL" type="number" name="stat-VOL">-->
+<!--                        <label for="stat-AST">AST</label>-->
+<!--                        <input id="stat-AST" type="number" name="stat-AST">-->
+<!--                        <label for="stat-PER">PER</label>-->
+<!--                        <input id="stat-PER" type="number" name="stat-PER">-->
+<!--                        <label for="stat-DEV">DEV</label>-->
+<!--                        <input id="stat-DEV" type="number" name="stat-DEV">-->
                     </form>
                 </div>
 
@@ -548,14 +555,14 @@
 
                         <h5>HP</h5>
                         <div class="form-row-2">
-                            <input type="number" placeholder="Actual" name="hp-actual">
-                            <input type="number" placeholder="Máximo" name="hp-max">
+                            <input type="number" placeholder="Actual" id="hp-actual" name="hp-actual">
+                            <input type="number" placeholder="Máximo" id="hp-maximo" name="hp-max">
                         </div>
 
                         <h5>MP</h5>
                         <div class="form-row-2">
-                            <input type="number" placeholder="Actual" name="mp-actual">
-                            <input type="number" placeholder="Máximo" name="mp-max">
+                            <input type="number" placeholder="Actual" id="mp-actual" name="mp-actual">
+                            <input type="number" placeholder="Máximo" id="mp-maximo" name="mp-max">
                         </div>
 
                     </form>

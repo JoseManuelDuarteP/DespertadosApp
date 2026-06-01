@@ -133,6 +133,70 @@ async function ponerDatosEnModal(idModal, indiceArray) {
             `;
             break;
         }
+
+        case "menu-misiones": {
+            let mision = datos.misiones[indiceArray];
+
+            document.getElementById("form-misiones").innerHTML =`
+                <div class="mission-form enhanced-mission-form">
+                    <div class="mission-header">
+                        <!-- Campo hidden para identificar la mision -->
+                        <input id="index-mision" type="hidden" value="${indiceArray}">
+                        <input id="mision-nombre-input" type="text" placeholder="Nombre de la misión" 
+                        name="nombre" value="${mision.nombre}">
+                    </div>
+                    <div class="mission-body">
+                        <textarea id="mision-descripcion-input" placeholder="Descripción de la misión..." 
+                        name="detalles">${mision.detalles}</textarea>
+                    </div>
+                </div>
+            `;
+            break;
+        }
+
+        case "menu-stats-persona": {
+            let html = `
+                <label for="nombre-persona-input">Nombre</label>
+                <input id="nombre-persona-input" type="text" 
+                name="nombre-persona" value="${datos.persona.nombre}">
+            `;
+
+            for (let stat of datos.persona.estadisticas) {
+                html += `
+                    <label for="stat-persona-${stat.stat}">${stat.stat}</label>
+                    <input id="stat-persona-${stat.stat}" type="number" name="stat-persona-${stat.stat}">
+                `;
+            }
+            document.getElementById("form-stats-persona").innerHTML = html;
+
+            for (let stat of datos.persona.estadisticas) {
+                document.getElementById(`stat-persona-${stat.stat}`).value = stat.valor;
+            }
+            break;
+        }
+
+        case "menu-vida-mp-persona": {
+            let html = `
+                <h5>HP</h5>
+                <div class="form-row-2">
+                    <input type="number" placeholder="Actual" id="hp-actual"
+                    name="hp-actual" value="${datos.persona.vida.actual}">
+                    <input type="number" placeholder="Máximo" id="hp-maximo"
+                    name="hp-max" value="${datos.persona.vida.maximo}">
+                </div>
+
+                <h5>MP</h5>
+                <div class="form-row-2">
+                    <input type="number" placeholder="Actual" id="mp-actual"
+                    name="mp-actual" value="${datos.persona.mp.actual}">
+                    <input type="number" placeholder="Máximo" id="mp-maximo"
+                    name="mp-max" value="${datos.persona.mp.maximo}">
+                </div>
+            `;
+
+            document.getElementById("form-vida-mp-persona").innerHTML = html;
+            break;
+        }
     }
 }
 
@@ -144,7 +208,7 @@ async function sobreEscribirJSON(idModal) {
             datos.nombre = document.getElementById("nombre-personaje-input").value;
 
             let stats =
-                document.querySelectorAll(`input[id^="stat-"]`)
+                document.querySelectorAll(`input[id^="stat-"]`);
             let estadisticas = [];
 
             stats.forEach((stat) => {
@@ -152,7 +216,7 @@ async function sobreEscribirJSON(idModal) {
                 let dato = {};
 
                 dato["stat"] = nombreStat;
-                dato["valor"] = stat.value;
+                dato["valor"] = parseInt(stat.value);
                 estadisticas.push(dato);
             });
             datos.estadisticas = estadisticas;
@@ -247,6 +311,67 @@ async function sobreEscribirJSON(idModal) {
 
                 datos.inventario.push(item);
             }
+
+            break;
+        }
+
+        case "menu-misiones": {
+            let indexArray =
+                document.getElementById("index-mision");
+
+            let mision;
+            if (indexArray) {
+                mision = datos.misiones[parseInt(indexArray.value)];
+
+                mision.nombre =
+                    document.getElementById("mision-nombre-input").value;
+                mision.detalles =
+                    document.getElementById("mision-descripcion-input").value;
+            } else {
+                mision = {};
+
+                mision["nombre"] =
+                    document.getElementById("mision-nombre-input").value;
+                mision["detalles"] =
+                    document.getElementById("mision-descripcion-input").value;
+
+                datos.misiones.push(mision);
+            }
+
+            break;
+        }
+
+        case "menu-stats-persona": {
+            datos.persona.nombre = document.getElementById("nombre-persona-input").value;
+
+            let stats =
+                document.querySelectorAll(`input[id^="stat-persona-"]`);
+            let estadisticas = [];
+
+            stats.forEach((stat) => {
+                let nombreStat = stat.id.replace("stat-persona-", "");
+                let dato = {};
+
+                dato["stat"] = nombreStat;
+                dato["valor"] = parseInt(stat.value);
+                estadisticas.push(dato);
+            });
+            datos.persona.estadisticas = estadisticas;
+            break;
+        }
+
+        case "menu-vida-mp-persona": {
+            datos.persona.vida.maximo =
+                parseInt(document.getElementById("hp-maximo").value);
+            datos.persona.vida.actual =
+                parseInt(document.getElementById("hp-actual").value);
+
+            datos.persona.mp.maximo =
+                parseInt(document.getElementById("mp-maximo").value);
+            datos.persona.mp.actual =
+                parseInt(document.getElementById("mp-actual").value);
+
+            break;
         }
     }
     await insertDB(datos, "json", 1);
@@ -279,12 +404,26 @@ function limpiarContenidoDinamico() {
     document.getElementById("habilidad-tier-input").value = "";
     document.getElementById("habilidad-stat-input").value = "";
     if (document.getElementById("index-habilidad"))
-    document.getElementById("index-habilidad").remove();
+        document.getElementById("index-habilidad").remove();
 
     // INVENTARIO
     document.getElementById("nombre-item").value = "";
     document.getElementById("descripcion-item").value = "";
     document.getElementById("cantidad-item").value = "";
+    if (document.getElementById("index-item"))
+        document.getElementById("index-item").remove();
+
+    // MISIONES
+    document.getElementById("mision-nombre-input").value = "";
+    document.getElementById("mision-descripcion-input").value = "";
+    if (document.getElementById("index-mision"))
+        document.getElementById("index-mision").remove();
+
+    // STATS PERSONA
+    document.getElementById("form-stats-persona").innerHTML = "";
+
+    // RECURSOS PERSONA
+    document.getElementById("form-vida-mp-persona").innerHTML = "";
 }
 
 document.addEventListener("DOMContentLoaded", function () {

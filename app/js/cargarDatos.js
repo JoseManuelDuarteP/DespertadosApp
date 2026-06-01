@@ -193,10 +193,19 @@ function crearContenidoTarjeta(x, clases, indexArray) {
                 <p>${x.detalles || ""}</p>
             `;
 
-        default:
+        case "mission":
             return `
+                <button class="edit-btn mission-edit-btn open"
+                        data-modal="menu-misiones"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-pencil"></i>
+                </button>
                 <h5>${x.nombre}</h5>
                 <p>${x.detalles || ""}</p>
+            `;
+
+        default:
+            return `
             `;
     }
 }
