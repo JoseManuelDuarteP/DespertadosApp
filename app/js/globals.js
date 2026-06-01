@@ -5,7 +5,7 @@ const listaDebilidades = {
     ABSORB: "Absorbe",
     REFLECT: "Refleja",
     NORMAL: "Normal"
-}
+};
 
 const listaStats = {
     FUE: "Fuerza",
@@ -16,6 +16,23 @@ const listaStats = {
     AST: "Astra",
     PER: "Percepción",
     DEV: "Devoción"
+};
+
+const listaElementos = {
+    FIS: "Físico",
+    DIS: "Disparo",
+    PIE: "Piedra",
+    ELE: "Electricidad",
+    MAG: "Magnetico",
+    NUC: "Nuclear",
+    HIE: "Hielo",
+    FUE: "Fuego",
+    LUZ: "Luz",
+    AGU: "Agua",
+    CIN: "Cinético",
+    VIE: "Viento",
+    PSI: "Psíquico",
+    OSC: "Oscuridad"
 }
 
 let db = null; //Global para acceso a DB
