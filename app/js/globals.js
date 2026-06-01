@@ -23,7 +23,7 @@ const listaElementos = {
     DIS: "Disparo",
     PIE: "Piedra",
     ELE: "Electricidad",
-    MAG: "Magnetico",
+    MAG: "Magnético",
     NUC: "Nuclear",
     HIE: "Hielo",
     FUE: "Fuego",
