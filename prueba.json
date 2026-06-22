@@ -156,24 +156,56 @@
         "detalles": "NORMAL"
       },
       {
-        "nombre": "Fuego",
-        "detalles": "WEAK"
+        "nombre": "Disparo",
+        "detalles": "NORMAL"
       },
       {
-        "nombre": "Hielo",
-        "detalles": "RESIST"
+        "nombre": "Piedra",
+        "detalles": "NORMAL"
       },
       {
         "nombre": "Electricidad",
         "detalles": "IMMUNE"
       },
       {
-        "nombre": "Oscuridad",
-        "detalles": "ABSORB"
+        "nombre": "Magnético",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Nuclear",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Hielo",
+        "detalles": "RESIST"
+      },
+      {
+        "nombre": "Fuego",
+        "detalles": "WEAK"
       },
       {
         "nombre": "Luz",
         "detalles": "REFLECT"
+      },
+      {
+        "nombre": "Agua",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Cinético",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Viento",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Psíquico",
+        "detalles": "NORMAL"
+      },
+      {
+        "nombre": "Oscuridad",
+        "detalles": "ABSORB"
       }
     ],
     "habilidades": [

@@ -1151,3 +1151,232 @@ select {
     min-height: 80px;
     resize: none;
 }
+
+/* ===== MODAL: DEBILIDADES PERSONA ===== */
+#menu-debilidades-persona .modal-box {
+    max-width: 520px;
+    width: 100%;
+    box-shadow: 8px 8px 0 red;
+}
+
+#menu-debilidades-persona .modal-header {
+    padding: 10px 14px;
+    transform: skew(4deg);
+}
+
+#menu-debilidades-persona .modal-content {
+    padding: 18px;
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#menu-debilidades-persona .weakness-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 12px;
+    border: 2px solid red;
+    background: #000;
+    transform: skew(-3deg);
+}
+
+#menu-debilidades-persona .weakness-form label {
+    font-size: 0.8rem;
+    color: red;
+    transform: skew(3deg);
+}
+
+#menu-debilidades-persona .weakness-form select {
+    width: 100%;
+    padding: 8px;
+    background: black;
+    color: white;
+    border: 2px solid white;
+    text-align: center;
+    transform: skew(-3deg);
+    transition: all 0.18s ease;
+}
+
+#menu-debilidades-persona .weakness-form select:hover,
+#menu-debilidades-persona .weakness-form select:focus {
+    border-color: red;
+    box-shadow: 0 0 8px red;
+    transform: skew(-3deg) scale(1.02);
+}
+
+#menu-debilidades-persona .modal-footer {
+    padding: 10px 14px;
+}
+
+#menu-debilidades-persona .weakness-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#menu-debilidades-persona .weakness-entry {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+    align-items: center;
+    padding: 10px;
+    background: #000;
+    border: 1px solid #222;
+    box-shadow: 4px 4px 0 rgba(255,0,0,0.06);
+    transform: skew(-3deg);
+}
+
+#menu-debilidades-persona .weakness-entry + .weakness-entry {
+    border-top: 1px solid #222;
+    margin-top: 6px;
+    padding-top: 12px;
+}
+
+#menu-debilidades-persona .weakness-entry label {
+    font-size: 0.8rem;
+    color: red;
+    transform: skew(3deg);
+    margin: 0;
+}
+
+#menu-debilidades-persona .weakness-entry select {
+    width: 100%;
+    padding: 8px;
+    background: black;
+    color: white;
+    border: 2px solid white;
+    transform: skew(-3deg);
+}
+
+#menu-debilidades-persona .weakness-controls {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    justify-content: flex-start;
+}
+
+#btn-add-debilidad.edit-btn {
+    height: 34px;
+    padding: 0 10px;
+    background: black;
+    border: 2px solid red;
+    color: red;
+    box-shadow: 3px 3px 0 red;
+}
+
+/* ===== SELECT-DEBILIDAD ===== */
+select-debilidad,
+.select-debilidad,
+select.select-debilidad {
+    display: inline-block;
+    margin: 0;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border: 1px solid currentColor;
+    transform: skew(5deg);
+    background: transparent;
+    color: inherit;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.14s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+select-debilidad:hover,
+.select-debilidad:hover,
+select.select-debilidad:hover,
+select-debilidad:focus,
+.select-debilidad:focus,
+select.select-debilidad:focus {
+    border-color: red;
+    box-shadow: 0 0 6px red;
+    transform: skew(5deg) scale(1.02);
+    outline: none;
+}
+
+.select-debilidad.normal,
+select-debilidad.normal {
+    color: #aaa;
+    border-color: #666;
+    background: transparent;
+}
+
+.select-debilidad.weak,
+select-debilidad.weak {
+    color: red;
+    border-color: red;
+    background: rgba(255,0,0,0.12);
+    color: white;
+}
+
+.select-debilidad.resist,
+select-debilidad.resist {
+    color: cyan;
+    border-color: cyan;
+    background: rgba(0,255,255,0.12);
+    color: black;
+}
+
+.select-debilidad.immune,
+select-debilidad.immune {
+    color: yellow;
+    border-color: yellow;
+    background: rgba(255,255,0,0.12);
+    color: black;
+}
+
+.select-debilidad.absorb,
+select-debilidad.absorb {
+    color: lime;
+    border-color: lime;
+    background: rgba(0,255,0,0.12);
+    color: black;
+}
+
+.select-debilidad.reflect,
+select-debilidad.reflect {
+    color: magenta;
+    border-color: magenta;
+    background: rgba(255,0,255,0.12);
+    color: white;
+}
+
+select.select-debilidad {
+    padding-right: 24px;
+    background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(135deg, currentColor 50%, transparent 50%);
+    background-position: calc(100% - 10px) calc(50% - 3px), calc(100% - 6px) calc(50% - 3px);
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+select.select-debilidad option,
+.select-debilidad option,
+select-debilidad option,
+select.select-debilidad option:focus,
+.select-debilidad option:focus,
+select-debilidad option:focus {
+    color: black !important;
+    background: white !important;
+}
+
+select.select-debilidad:focus option,
+.select-debilidad:focus option,
+select-debilidad:focus option {
+    color: black !important;
+    background: white !important;
+}
+
+#menu-debilidades-persona select option {
+    color: black !important;
+    background: white !important;
+}
+
+#menu-debilidades-persona select:focus option {
+    color: black !important;
+    background: white !important;
+}

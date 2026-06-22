@@ -138,9 +138,18 @@ function crearContenidoTarjeta(x, clases, indexArray) {
             `;
 
         case "weakness-item":
+            let debs = "";
+            for (let deb in listaDebilidades) {
+                debs += `
+                    <option ${deb === x.detalles ? "selected" : ""} value="${deb}">${listaDebilidades[deb]}</option>
+                `;
+            }
+
             return `
                 <h5>${x.nombre}</h5>
-                <p>${listaDebilidades[x.detalles]}</p>
+                <select id="select-debilidad-${indexArray}" class="select-debilidad" data-elemento="${x.nombre}">
+                    ${debs}
+                </select>
             `;
 
         case "inventory-item":

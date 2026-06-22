@@ -426,6 +426,15 @@ function limpiarContenidoDinamico() {
     document.getElementById("form-vida-mp-persona").innerHTML = "";
 }
 
+async function cambiarDebilidad(select) {
+    let datos = await selectDB("json", 1);
+    let debilidad = datos.persona.debilidades.find(d => d.nombre === select.dataset.elemento);
+
+    debilidad.detalles = select.value;
+    await insertDB(datos, "json", 1);
+    cargarJSONDesdeDB();
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("click", function (e) {
         const btn = e.target.closest(".open, .create");
@@ -450,5 +459,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const idModal = btn.dataset.modal;
         if (idModal) void sobreEscribirJSON(idModal);
+    });
+
+    document.addEventListener("change", function (e) {
+        const select = e.target.closest(".select-debilidad");
+        if (!select) return;
+
+        void cambiarDebilidad(select);
     });
 });
