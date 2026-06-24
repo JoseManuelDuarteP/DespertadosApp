@@ -212,12 +212,16 @@
       {
         "nombre": "Oogi",
         "nivel": 2,
-        "detalles": "Pues algo hará"
+        "detalles": "Pues algo hará",
+        "elemento": "Oscuridad",
+        "codElemento": "OSC"
       },
       {
         "nombre": "Myriad truths",
         "nivel": 10,
-        "detalles": "Te asesina"
+        "detalles": "Te asesina",
+        "elemento": "Luz",
+        "codElemento": "LUZ"
       }
     ]
   }

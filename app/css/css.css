@@ -339,6 +339,23 @@ h4 {
     font-weight: bold;
 }
 
+/* Colores por elemento */
+.skill-card.fis .skill-meta span:first-child { background:#6b6b6b; color:#fff; border-color:#4d4d4d; }
+.skill-card.dis .skill-meta span:first-child { background:#ff8a00; color:#000; border-color:#b06b00; }
+.skill-card.pie .skill-meta span:first-child { background:#8b6b4a; color:#fff; border-color:#6a4f36; }
+.skill-card.ele .skill-meta span:first-child { background:#ffd24d; color:#000; border-color:#b38f00; }
+.skill-card.mag .skill-meta span:first-child { background:#9b59b6; color:#fff; border-color:#7a3f96; }
+.skill-card.nuc .skill-meta span:first-child { background:#7fbf7f; color:#000; border-color:#5f9f5f; }
+.skill-card.hie .skill-meta span:first-child { background:#66c2ff; color:#000; border-color:#2f9fe0; }
+.skill-card.fue .skill-meta span:first-child { background:#ff3b3b; color:#000; border-color:#b22b2b; }
+.skill-card.luz .skill-meta span:first-child { background:#fff399; color:#000; border-color:#d4c46a; }
+.skill-card.agu .skill-meta span:first-child { background:#2b6cff; color:#fff; border-color:#204fc0; }
+.skill-card.cin .skill-meta span:first-child { background:#27ae60; color:#fff; border-color:#1f8947; }
+.skill-card.vie .skill-meta span:first-child { background:#7dff9a; color:#000; border-color:#4fb56a; }
+.skill-card.psi .skill-meta span:first-child { background:#ff66cc; color:#000; border-color:#c34f9a; }
+.skill-card.osc .skill-meta span:first-child { background:#222; color:#fff; border-color:#111; }
+.skill-card.nap .skill-meta span:first-child { background:transparent; color:#aaa; border-color:#666; }
+
 .character-skill:hover {
     box-shadow: 5px 5px 0 white;
     transform: skew(-3deg) scale(1.04);
@@ -954,6 +971,18 @@ select {
     box-shadow: 2px 2px 0 white;
     border-color: white;
     color: white;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.skill-edit-btn.open {
+    right: 6px;
+}
+
+.skill-edit-btn.delete {
+    right: 44px;
 }
 
 /* Hover coherente con personaje */
@@ -1102,6 +1131,14 @@ select {
     box-shadow: 2px 2px 0 white;
     border-color: red;
     color: red;
+}
+
+.mission-edit-btn.open {
+    right: 6px;
+}
+
+.mission-edit-btn.delete {
+    right: 44px;
 }
 
 .mission-edit-btn:hover {
@@ -1379,4 +1416,52 @@ select-debilidad:focus option {
 #menu-debilidades-persona select:focus option {
     color: black !important;
     background: white !important;
+}
+
+/* ===== HABILIDADES PERSONA ===== */
+#menu-habilidades-persona .modal-box {
+    max-width: 680px;
+    width: 100%;
+    box-shadow: 8px 8px 0 red;
+}
+
+#menu-habilidades-persona .modal-content {
+    padding: 18px;
+    background: #111;
+}
+
+.enhanced-persona-skill-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border: 2px solid red;
+    padding: 12px;
+    background: #000;
+
+    transform: skew(-3deg);
+    box-shadow: 4px 4px 0 red;
+}
+
+.enhanced-persona-skill-form .skill-form-header input {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid red;
+    text-align: center;
+}
+
+.enhanced-persona-skill-form .skill-form-body textarea {
+    width: 100%;
+    min-height: 90px;
+}
+
+.enhanced-persona-skill-form .skill-form-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+#menu-habilidades-persona .modal-footer {
+    padding: 12px 16px;
 }

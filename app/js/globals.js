@@ -32,7 +32,8 @@ const listaElementos = {
     CIN: "Cinético",
     VIE: "Viento",
     PSI: "Psíquico",
-    OSC: "Oscuridad"
+    OSC: "Oscuridad",
+    NAP: "N/A"
 }
 
 let db = null; //Global para acceso a DB

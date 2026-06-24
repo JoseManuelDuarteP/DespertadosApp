@@ -112,6 +112,8 @@ function comprobarClaseCss(x, clases) {
     switch(clases) {
         case "weakness-item":
             return " " + x.detalles.toLowerCase();
+        case "skill-card":
+            return " " + x.codElemento.toLowerCase();
         default:
             return "";
     }
@@ -126,6 +128,11 @@ function crearContenidoTarjeta(x, clases, indexArray) {
                         data-modal="menu-habilidades-personaje"
                         data-index_array=${indexArray}>
                     <i class="bi bi-pencil"></i>
+                </button>
+                <button class="edit-btn skill-edit-btn delete"
+                        data-modal="menu-habilidades-personaje"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-trash"></i>
                 </button>
 
                 <h5>${x.nombre} +${x.nivel * x.tier}</h5>
@@ -159,6 +166,12 @@ function crearContenidoTarjeta(x, clases, indexArray) {
                         data-index_array=${indexArray}>
                     <i class="bi bi-pencil"></i>
                 </button>
+                <button class="edit-btn skill-edit-btn delete"
+                        data-modal="menu-inventario"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-trash"></i>
+                </button>
+                
                 <h5>${x.nombre}</h5><span class="quantity">${x.cantidad}</span>
                 <p>${x.descripcion}</p>
             `;
@@ -198,8 +211,23 @@ function crearContenidoTarjeta(x, clases, indexArray) {
 
         case "skill-card":
             return `
+                <button class="edit-btn skill-edit-btn open"
+                        data-modal="menu-habilidades-persona"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button class="edit-btn skill-edit-btn delete"
+                        data-modal="menu-habilidades-persona"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-trash"></i>
+                </button>
+                
                 <h5>${x.nombre} +${x.nivel}</h5>
                 <p>${x.detalles || ""}</p>
+                <div class="skill-meta">
+                    <span>${x.elemento || "-"}</span>
+                    <span>Nv: ${x.nivel || "-"}</span>
+                </div>
             `;
 
         case "mission":
@@ -209,6 +237,12 @@ function crearContenidoTarjeta(x, clases, indexArray) {
                         data-index_array=${indexArray}>
                     <i class="bi bi-pencil"></i>
                 </button>
+                <button class="edit-btn mission-edit-btn delete"
+                        data-modal="menu-misiones"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-trash"></i>
+                </button>
+                
                 <h5>${x.nombre}</h5>
                 <p>${x.detalles || ""}</p>
             `;

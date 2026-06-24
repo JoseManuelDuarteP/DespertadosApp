@@ -156,7 +156,7 @@
                             <h2>Misiones</h2>
                             <button id="btn-add-mision" class="edit-btn create"
                                     data-modal="menu-misiones">
-                                <i class="bi bi-plus-lg"></i> Nuevo
+                                <i class="bi bi-plus-lg"></i> Nueva
                             </button>
                         </div>
                         <div id="mission-list">
@@ -253,9 +253,9 @@
 
                         <div class="edit-header">
                             <h4>Habilidades</h4>
-                            <button id="btn-edit-habilidades-persona" class="edit-btn open"
+                            <button id="btn-edit-habilidades-persona" class="edit-btn create"
                                     data-modal="menu-habilidades-persona">
-                                <i class="bi bi-pencil"></i> Editar
+                                <i class="bi bi-plus-lg"></i> Nueva
                             </button>
                         </div>
                         <div id="persona-skill-list">
@@ -583,17 +583,45 @@
 
                 <div class="modal-content" id="modal-persona-skill-list">
                     <form id="form-habilidades-persona">
+                        <div class="skill-form enhanced-persona-skill-form">
 
-                        <div class="skill-form">
+                            <div id="persona-skill-form-header" class="skill-form-header">
+                                <input id="persona-habilidad-nombre" type="text" placeholder="Nombre de la habilidad" name="nombre">
+                            </div>
 
-                            <input type="text" placeholder="Nombre" name="nombre">
+                            <div id="persona-skill-form-body" class="skill-form-body">
+                                <textarea id="persona-habilidad-descripcion" placeholder="Descripción de la habilidad..." name="detalles"></textarea>
+                            </div>
 
-                            <input type="number" placeholder="Nivel" name="nivel">
+                            <div id="persona-skill-form-stats" class="skill-form-stats">
+                                <div class="stat-input">
+                                    <label for="persona-habilidad-elemento">Elemento</label>
+                                    <select id="persona-habilidad-elemento" name="elemento">
+                                        <option disabled selected></option>
+                                        <option value="FIS">Físico</option>
+                                        <option value="DIS">Disparo</option>
+                                        <option value="PIE">Piedra</option>
+                                        <option value="ELE">Electricidad</option>
+                                        <option value="MAG">Magnético</option>
+                                        <option value="NUC">Nuclear</option>
+                                        <option value="HIE">Hielo</option>
+                                        <option value="FUE">Fuego</option>
+                                        <option value="LUZ">Luz</option>
+                                        <option value="AGU">Agua</option>
+                                        <option value="CIN">Cinético</option>
+                                        <option value="VIE">Viento</option>
+                                        <option value="PSI">Psíquico</option>
+                                        <option value="OSC">Oscuridad</option>
+                                        <option value="NAP">N/A</option>
+                                    </select>
+                                </div>
 
-                            <textarea placeholder="Descripción" name="detalles"></textarea>
-
+                                <div class="stat-input">
+                                    <label for="persona-habilidad-nivel">Nivel</label>
+                                    <input id="persona-habilidad-nivel" type="number" name="nivel" placeholder="0" min="0">
+                                </div>
+                            </div>
                         </div>
-
                     </form>
                 </div>
 

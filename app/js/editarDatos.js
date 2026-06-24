@@ -197,6 +197,44 @@ async function ponerDatosEnModal(idModal, indiceArray) {
             document.getElementById("form-vida-mp-persona").innerHTML = html;
             break;
         }
+
+        case "menu-habilidades-persona": {
+            let habilidad = datos.persona.habilidades[indiceArray];
+
+            document.getElementById("persona-skill-form-header").innerHTML =`
+                <!-- Campo hidden para identificar la habilidad -->
+                <input id="index-habilidad-persona" type="hidden" value="${indiceArray}">
+                <input id="persona-habilidad-nombre" type="text" 
+                placeholder="Nombre de la habilidad" name="nombre" value="${habilidad.nombre}">
+            `;
+            document.getElementById("persona-skill-form-body").innerHTML =`
+                <textarea id="persona-habilidad-descripcion" placeholder="Descripción de la habilidad..."
+                name="detalles">${habilidad.detalles}</textarea>
+            `;
+            document.getElementById("persona-skill-form-stats").innerHTML = `
+                <div class="stat-input">
+                    <label for="persona-habilidad-elemento">Elemento</label>
+                    <select id="persona-habilidad-elemento" name="elemento">
+                        <option disabled selected></option>
+                    </select>
+                </div>
+
+                <div class="stat-input">
+                    <label for="persona-habilidad-nivel">Nivel</label>
+                    <input id="persona-habilidad-nivel" type="number" name="nivel" placeholder="0"
+                    value="${habilidad.nivel}">
+                </div>
+            `;
+
+            for (let elem in listaElementos) {
+                document.getElementById("persona-habilidad-elemento").innerHTML +=`
+                    <option value=${elem}>${listaElementos[elem]}</option>
+                `;
+            }
+            document.getElementById("persona-habilidad-elemento").value =
+                habilidad.codElemento;
+            break;
+        }
     }
 }
 
@@ -373,6 +411,44 @@ async function sobreEscribirJSON(idModal) {
 
             break;
         }
+
+        case "menu-habilidades-persona": {
+            let indexArray =
+                document.getElementById("index-habilidad-persona");
+
+            let habilidad;
+            if (indexArray) {
+                habilidad = datos.persona.habilidades[parseInt(indexArray.value)];
+
+                habilidad.nombre =
+                    document.getElementById("persona-habilidad-nombre").value;
+                habilidad.detalles =
+                    document.getElementById("persona-habilidad-descripcion").value;
+                habilidad.nivel =
+                    parseInt(document.getElementById("persona-habilidad-nivel").value);
+                habilidad.elemento =
+                    listaElementos[document.getElementById("persona-habilidad-elemento").value];
+                habilidad.codElemento =
+                    document.getElementById("persona-habilidad-elemento").value;
+            } else {
+                habilidad = {};
+
+                habilidad["nombre"] =
+                    document.getElementById("persona-habilidad-nombre").value;
+                habilidad["detalles"] =
+                    document.getElementById("persona-habilidad-descripcion").value;
+                habilidad["nivel"] =
+                    document.getElementById("persona-habilidad-nivel").value;
+                habilidad["elemento"] =
+                    listaElementos[document.getElementById("persona-habilidad-elemento").value];
+                habilidad["codElemento"] =
+                    document.getElementById("persona-habilidad-elemento").value;
+
+                datos.persona.habilidades.push(habilidad);
+            }
+
+            break;
+        }
     }
     await insertDB(datos, "json", 1);
     cargarJSONDesdeDB();
@@ -424,6 +500,15 @@ function limpiarContenidoDinamico() {
 
     // RECURSOS PERSONA
     document.getElementById("form-vida-mp-persona").innerHTML = "";
+
+    // HABILIDADES PERSONA
+    document.getElementById("persona-habilidad-nombre").value = "";
+    document.getElementById("persona-habilidad-descripcion").value = "";
+    document.getElementById("persona-habilidad-nivel").value = "";
+    document.getElementById("persona-habilidad-elemento").value = "";
+    if (document.getElementById("index-habilidad-persona"))
+        document.getElementById("index-habilidad-persona").remove();
+
 }
 
 async function cambiarDebilidad(select) {
@@ -431,6 +516,35 @@ async function cambiarDebilidad(select) {
     let debilidad = datos.persona.debilidades.find(d => d.nombre === select.dataset.elemento);
 
     debilidad.detalles = select.value;
+    await insertDB(datos, "json", 1);
+    cargarJSONDesdeDB();
+}
+
+async function borrarElementoDelJSON(idModal, indiceArray) {
+    let datos = await selectDB("json", 1);
+
+    if (confirm("¿Seguro que quieres borrar esto?"))
+    switch (idModal) {
+        case "menu-habilidades-personaje": {
+            datos.habilidades.splice(indiceArray, 1);
+            break;
+        }
+
+        case "menu-inventario": {
+            datos.inventario.splice(indiceArray, 1);
+            break;
+        }
+
+        case "menu-misiones": {
+            datos.misiones.splice(indiceArray, 1);
+            break;
+        }
+
+        case "menu-habilidades-persona": {
+            datos.persona.habilidades.splice(indiceArray, 1);
+            break;
+        }
+    }
     await insertDB(datos, "json", 1);
     cargarJSONDesdeDB();
 }
@@ -459,6 +573,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const idModal = btn.dataset.modal;
         if (idModal) void sobreEscribirJSON(idModal);
+    });
+
+    document.addEventListener("click", function (e) {
+        const btn = e.target.closest(".delete");
+        if (!btn) return;
+
+        const idModal = btn.dataset.modal;
+        const indiceArray = btn.dataset.index_array;
+        if (idModal) void borrarElementoDelJSON(idModal, indiceArray);
     });
 
     document.addEventListener("change", function (e) {
