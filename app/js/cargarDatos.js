@@ -14,7 +14,7 @@ function leerJSON(archivo, callback) {
         let texto = event.target.result;
         let datos = JSON.parse(texto);
 
-        insertDB(datos, "json", 1);
+        void insertDB(datos, "json", 1);
 
         try {
             callback(datos);
@@ -255,8 +255,192 @@ function crearContenidoTarjeta(x, clases, indexArray) {
 
 function cargarJSONDesdeDB() {
     selectDB("json", 1).then(datos => {
-        if (datos) ponerJSONenElHTML(datos);
+        if (!datos) generarJSONBase();
+        ponerJSONenElHTML(datos);
     });
+}
+
+function generarJSONBase() {
+    let json = {
+        nombre: "",
+        foto: null,
+        estadisticas: [
+            {
+                stat: "FUE",
+                valor: 0
+            },
+            {
+                stat: "DES",
+                valor: 0
+            },
+            {
+                stat: "CON",
+                valor: 0
+            },
+            {
+                stat: "INT",
+                valor: 0
+            },
+            {
+                stat: "VOL",
+                valor: 0
+            },
+            {
+                stat: "AST",
+                valor: 0
+            },
+            {
+                stat: "PER",
+                valor: 0
+            },
+            {
+                stat: "DEV",
+                valor: 0
+            }
+        ],
+        vida: [
+            {
+                parte: "Cabeza",
+                maximo: 40,
+                actual: 40
+            },
+            {
+                parte: "Torso",
+                maximo: 60,
+                actual: 60
+            },
+            {
+                parte: "Brazo izq.",
+                maximo: 20,
+                actual: 20
+            },
+            {
+                parte: "Brazo der.",
+                maximo: 20,
+                actual: 20
+            },
+            {
+                parte: "Pierna izq.",
+                maximo: 30,
+                actual: 30
+            },
+            {
+                parte: "Pierna der.",
+                maximo: 30,
+                actual: 30
+            }
+        ],
+        habilidades: [],
+        inventario: [],
+        misiones: [],
+        persona: {
+            nombre: "",
+            foto: null,
+            vida: {
+                maximo: 100,
+                actual: 100
+            },
+            mp: {
+                maximo: 50,
+                actual: 50
+            },
+            estadisticas: [
+                {
+                    stat: "FUE",
+                    valor: 0
+                },
+                {
+                    stat: "DES",
+                    valor: 0
+                },
+                {
+                    stat: "CON",
+                    valor: 0
+                },
+                {
+                    stat: "INT",
+                    valor: 0
+                },
+                {
+                    stat: "VOL",
+                    valor: 0
+                },
+                {
+                    stat: "AST",
+                    valor: 0
+                },
+                {
+                    stat: "PER",
+                    valor: 0
+                },
+                {
+                    stat: "DEV",
+                    valor: 0
+                }
+            ],
+            debilidades: [
+                {
+                    nombre: "Físico",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Disparo",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Piedra",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Electricidad",
+                    detalles: "IMMUNE"
+                },
+                {
+                    nombre: "Magnético",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Nuclear",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Hielo",
+                    detalles: "RESIST"
+                },
+                {
+                    nombre: "Fuego",
+                    detalles: "WEAK"
+                },
+                {
+                    nombre: "Luz",
+                    detalles: "REFLECT"
+                },
+                {
+                    nombre: "Agua",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Cinético",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Viento",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Psíquico",
+                    detalles: "NORMAL"
+                },
+                {
+                    nombre: "Oscuridad",
+                    detalles: "ABSORB"
+                }
+            ],
+            habilidades: []
+        }
+    }
+
+    void insertDB(json, "json", 1);
 }
 
 document.addEventListener("DOMContentLoaded", function () {
