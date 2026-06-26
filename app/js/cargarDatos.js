@@ -39,6 +39,9 @@ function ponerJSONenElHTML(datos) {
     document.getElementById("skill-list").innerHTML =
         crearHTML(datos.habilidades, "skill-card character-skill");
 
+    document.getElementById("tara-list").innerHTML =
+        crearHTML(datos.taras, "tara-card");
+
     document.getElementById("inventory-list").innerHTML =
         crearHTML(datos.inventario, "inventory-item");
 
@@ -230,6 +233,24 @@ function crearContenidoTarjeta(x, clases, indexArray) {
                 </div>
             `;
 
+        case "tara-card": {
+            return `
+                <button class="tara-edit-btn open"
+                        data-modal="menu-taras"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-pencil"></i>
+                </button>
+                <button class="tara-edit-btn delete"
+                        data-modal="menu-taras"
+                        data-index_array=${indexArray}>
+                    <i class="bi bi-trash"></i>
+                </button>
+                
+                <h5>${x.nombre}</h5>
+                <p>${x.detalles}</p>
+            `;
+        }
+
         case "mission":
             return `
                 <button class="edit-btn mission-edit-btn open"
@@ -331,6 +352,7 @@ function generarJSONBase() {
             }
         ],
         habilidades: [],
+        taras: [],
         inventario: [],
         misiones: [],
         persona: {
@@ -439,7 +461,6 @@ function generarJSONBase() {
             habilidades: []
         }
     }
-
     void insertDB(json, "json", 1);
 }
 

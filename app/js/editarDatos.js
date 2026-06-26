@@ -107,6 +107,23 @@ async function ponerDatosEnModal(idModal, indiceArray) {
             break;
         }
 
+        case "menu-taras": {
+            let tara = datos.taras[indiceArray];
+
+            document.getElementById("tara-form-header").innerHTML =`
+                <!-- Campo hidden para identificar la habilidad -->
+                <input id="index-tara" type="hidden" value="${indiceArray}">
+                <input id="tara-nombre-input" type="text" placeholder="Nombre de la tara"
+                name="nombre" value="${tara.nombre}">
+            `;
+            document.getElementById("tara-form-body").innerHTML =`
+                <textarea id="tara-descripcion-input"
+                placeholder="Descripción de la tara (efecto, limitación, secreto)..."
+                name="detalles">${tara.detalles}</textarea>
+            `;
+            break;
+        }
+
         case "menu-inventario": {
             let item = datos.inventario[indiceArray];
 
@@ -323,6 +340,32 @@ async function sobreEscribirJSON(idModal) {
             break;
         }
 
+        case "menu-taras": {
+            let indexArray =
+                document.getElementById("index-tara");
+
+            let tara;
+            if (indexArray) {
+                tara = datos.taras[parseInt(indexArray.value)];
+
+                tara.nombre =
+                    document.getElementById("tara-nombre-input").value;
+                tara.detalles =
+                    document.getElementById("tara-descripcion-input").value;
+            } else {
+                tara = {};
+
+                tara["nombre"] =
+                    document.getElementById("tara-nombre-input").value;
+                tara["detalles"] =
+                    document.getElementById("tara-descripcion-input").value;
+
+                datos.taras.push(tara);
+            }
+
+            break;
+        }
+
         case "menu-inventario": {
             let indexArray =
                 document.getElementById("index-item");
@@ -482,6 +525,10 @@ function limpiarContenidoDinamico() {
     if (document.getElementById("index-habilidad"))
         document.getElementById("index-habilidad").remove();
 
+    // TARAS
+    document.getElementById("tara-nombre-input").value = "";
+    document.getElementById("tara-descripcion-input").value = "";
+
     // INVENTARIO
     document.getElementById("nombre-item").value = "";
     document.getElementById("descripcion-item").value = "";
@@ -508,7 +555,6 @@ function limpiarContenidoDinamico() {
     document.getElementById("persona-habilidad-elemento").value = "";
     if (document.getElementById("index-habilidad-persona"))
         document.getElementById("index-habilidad-persona").remove();
-
 }
 
 async function cambiarDebilidad(select) {
@@ -543,6 +589,10 @@ async function borrarElementoDelJSON(idModal, indiceArray) {
         case "menu-habilidades-persona": {
             datos.persona.habilidades.splice(indiceArray, 1);
             break;
+        }
+
+        case "menu-taras": {
+            datos.taras.splice(indiceArray, 1);
         }
     }
     await insertDB(datos, "json", 1);

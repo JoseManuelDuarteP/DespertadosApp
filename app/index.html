@@ -121,6 +121,27 @@
 <!--                                </div>-->
 <!--                            </div>-->
                         </div>
+
+                        <!-- Taras -->
+                        <div class="edit-header">
+                            <h4>Taras</h4>
+                            <button id="btn-add-tara" class="edit-btn create"
+                                    data-modal="menu-taras">
+                                <i class="bi bi-plus-lg"></i> Nueva
+                            </button>
+                        </div>
+                        <div id="tara-list">
+<!--                            <div class="tara-card">-->
+<!--                                <button class="tara-edit-btn open" data-id="">✎</button>-->
+<!--                                <h5>Fobia a las Alturas</h5>-->
+<!--                                <p>Experimentas pánico y mareos cuando estás en lugares elevados.</p>-->
+<!--                            </div>-->
+<!--                            <div class="tara-card">-->
+<!--                                <button class="tara-edit-btn open" data-id="">✎</button>-->
+<!--                                <h5>Deuda Oculta</h5>-->
+<!--                                <p>Alguien te busca por una deuda pendiente. Si te descubren, las consecuencias serán graves.</p>-->
+<!--                            </div>-->
+                        </div>
                     </div>
                 </div>
 
@@ -425,6 +446,41 @@
                             data-modal="menu-habilidades-personaje">Guardar</button>
                     <button class="edit-btn cancel"
                             data-modal="menu-habilidades-personaje">Cancelar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="editable-section" id="menu-taras">
+            <div class="modal-box tara-modal">
+                <div class="modal-header">
+                    <h2>Taras</h2>
+                    <button class="modal-close cancel"
+                            data-modal="menu-taras">✕</button>
+                </div>
+
+                <div class="modal-content" id="modal-tara-list">
+                    <form id="form-taras">
+                        <div class="tara-form enhanced-tara-form">
+
+                            <div id="tara-form-header" class="tara-form-header">
+                                <input id="tara-nombre-input" type="text" placeholder="Nombre de la tara" name="nombre">
+                            </div>
+
+                            <div id="tara-form-body" class="tara-form-body">
+                                <textarea id="tara-descripcion-input"
+                                placeholder="Descripción de la tara (efecto, limitación, secreto)..."
+                                name="detalles"></textarea>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="edit-btn confirm"
+                            data-modal="menu-taras">Guardar</button>
+                    <button class="edit-btn cancel"
+                            data-modal="menu-taras">Cancelar</button>
                 </div>
             </div>
         </div>

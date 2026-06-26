@@ -1447,8 +1447,11 @@ select-debilidad:focus option {
     width: 100%;
     font-size: 1rem;
     font-weight: bold;
-    border: 2px solid red;
     text-align: center;
+
+    border: 2px solid red;
+    background: black;
+    color: #dd33ff;
 }
 
 .enhanced-persona-skill-form .skill-form-body textarea {
@@ -1464,4 +1467,224 @@ select-debilidad:focus option {
 
 #menu-habilidades-persona .modal-footer {
     padding: 12px 16px;
+}
+
+/* ===== TARAS ===== */
+.tara-card {
+    background: #0a0a1a;
+    border: 2px solid #9933ff;
+    padding: 10px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+    border-radius: 3px;
+}
+
+.tara-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #9933ff, transparent);
+    transition: left 0.4s;
+}
+
+.tara-card:hover::before {
+    left: 100%;
+}
+
+.tara-card:hover {
+    transform: skew(-3deg) scale(1.04);
+    box-shadow: 0 0 12px #9933ff;
+    background: #111;
+}
+
+.tara-card h5 {
+    color: #dd33ff;
+    font-weight: bold;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #9933ff;
+    display: inline-block;
+    padding-bottom: 2px;
+    transform: skew(3deg);
+}
+
+.tara-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #ccc;
+    transform: skew(3deg);
+    line-height: 1.3;
+}
+
+/* Botones de edición en tarjetas de taras */
+.tara-edit-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+
+    height: 28px;
+    padding: 0 6px;
+
+    font-size: 0.8rem;
+    box-shadow: 2px 2px 0 #9933ff;
+    border-color: #9933ff;
+    color: #9933ff;
+    background: black;
+    border: 2px solid #9933ff;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: skew(-5deg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tara-edit-btn.open {
+    right: 6px;
+}
+
+.tara-edit-btn.delete {
+    right: 44px;
+}
+
+.tara-edit-btn:hover {
+    background: #9933ff;
+    color: black;
+    box-shadow: 3px 3px 0 #dd33ff;
+    transform: skew(-5deg) scale(1.05);
+}
+
+/* ===== MODAL: TARAS ===== */
+.tara-modal .modal-box {
+    max-width: 600px;
+    width: 100%;
+    border-color: #9933ff;
+    box-shadow: 8px 8px 0 #9933ff;
+}
+
+.tara-modal .modal-header {
+    background: linear-gradient(90deg, #6a0dad, #9933ff, #6a0dad);
+    padding: 10px 14px;
+    transform: skew(4deg);
+}
+
+.tara-modal .modal-header h2 {
+    color: white;
+    border-bottom: 2px solid white;
+    text-shadow: 0 0 8px rgba(153, 51, 255, 0.8);
+}
+
+.tara-modal .modal-content {
+    padding: 18px;
+    background: #0f0f1a;
+}
+
+.tara-form,
+.enhanced-tara-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border: 2px solid #9933ff;
+    padding: 14px;
+    background: #0a0a15;
+
+    box-shadow: 6px 6px 0 #9933ff;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+    border-radius: 3px;
+}
+
+.tara-form:hover {
+    box-shadow: 8px 8px 0 #dd33ff;
+}
+
+.tara-form-header input,
+.enhanced-tara-form .tara-form-header input {
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+
+    border: 2px solid #9933ff;
+    background: black;
+    color: #dd33ff;
+}
+
+.tara-form-header input:focus {
+    border-color: #dd33ff;
+    box-shadow: 0 0 10px #9933ff;
+}
+
+.tara-form-body,
+.enhanced-tara-form .tara-form-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.tara-form-body textarea,
+.enhanced-tara-form .tara-form-body textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: none;
+
+    background: black;
+    color: #ccc;
+    border: 2px solid white;
+
+    font-size: 0.9rem;
+    transform: skew(-3deg);
+    transition: all 0.2s ease;
+}
+
+.tara-form-body textarea:hover,
+.enhanced-tara-form .tara-form-body textarea:hover {
+    border-color: #9933ff;
+    box-shadow: 0 0 8px rgba(153, 51, 255, 0.5);
+}
+
+.tara-form-body textarea:focus,
+.enhanced-tara-form .tara-form-body textarea:focus {
+    border-color: #dd33ff;
+    box-shadow: 0 0 12px #9933ff;
+    transform: skew(-3deg) scale(1.01);
+}
+
+.tara-modal .modal-footer {
+    padding: 12px 16px;
+    background: #000;
+    border-top: 1px solid #9933ff;
+}
+
+/* Botones del modal de taras */
+.tara-modal .edit-btn.confirm {
+    border-color: #9933ff;
+    color: #9933ff;
+    box-shadow: 3px 3px 0 #9933ff;
+}
+
+.tara-modal .edit-btn.confirm:hover {
+    background: #9933ff;
+    color: black;
+    box-shadow: 5px 5px 0 #dd33ff;
+}
+
+.tara-modal .edit-btn.cancel {
+    border-color: #9933ff;
+    color: #9933ff;
+    box-shadow: 3px 3px 0 #9933ff;
+}
+
+.tara-modal .edit-btn.cancel:hover {
+    background: #9933ff;
+    color: black;
+    border-color: #9933ff;
+    box-shadow: 5px 5px 0 #9933ff;
 }

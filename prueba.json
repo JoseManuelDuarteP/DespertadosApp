@@ -83,6 +83,16 @@
       "stat": "INT"
     }
   ],
+  "taras": [
+    {
+      "nombre": "No puede nadar",
+      "detalles": "Creo que se explica solo"
+    },
+    {
+      "nombre": "Dislexia",
+      "detalles": "Xoi añañin"
+    }
+  ],
   "inventario": [
     {
       "nombre": "Galleta",
